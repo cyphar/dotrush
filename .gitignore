@@ -1,0 +1,4 @@
+# Compiled stuff
+*.jar
+*.class
+out/*
