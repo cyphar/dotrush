@@ -4,16 +4,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 
+import com.jtdev.circlerush.CircleRush;
 import com.jtdev.circlerush.utils.Logger;
 import com.jtdev.circlerush.entities.World;
-import com.jtdev.circlerush.Main;
 
 public class GameScreen implements Screen {
     private World world;
     private Logger logger;
-    private Main main;
+    private CircleRush main;
 
-    public GameScreen(Main main) {
+    public GameScreen(CircleRush main) {
         this.main = main;
     }
 

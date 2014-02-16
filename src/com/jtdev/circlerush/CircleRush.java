@@ -6,7 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.jtdev.circlerush.screens.SplashScreen;
 import com.jtdev.circlerush.utils.Logger;
 
-public class Main extends Game {
+public class CircleRush extends Game {
     private Logger logger;
 
     @Override
