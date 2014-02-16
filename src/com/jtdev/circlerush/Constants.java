@@ -18,11 +18,12 @@ public class Constants {
     public static float ENEMY_MIN_VELOCITY = 40;
     public static float ENEMY_MAX_VELOCITY = 100;
 
-    public static float ENEMY_DMIN_RADIUS = 35; /* 35 less than player */
-    public static float ENEMY_DMAX_RADIUS = 15; /* 15 more than player */
+    public static float ENEMY_DMIN_RADIUS = 45; /* 45 less than player */
+    public static float ENEMY_DMAX_RADIUS = 35; /* 35 more than player */
+    public static float ENEMY_MIN_RADIUS = 10;
 
     /* player */
-    public static float PLAYER_MIN_RADIUS = 10;
+    public static float PLAYER_MIN_RADIUS = 25;
 
     /* debugging */
     public static boolean DEBUG_LOG = true;

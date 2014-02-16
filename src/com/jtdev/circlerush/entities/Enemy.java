@@ -26,6 +26,9 @@ public class Enemy implements Entity {
         velocity = Rand.getRange(Constants.ENEMY_MIN_VELOCITY, Constants.ENEMY_MAX_VELOCITY);
         colour = new Color(Rand.getRange(0.2f, 0.9f), Rand.getRange(0.2f, 0.9f), Rand.getRange(0.2f, 0.9f), 1f);
 
+        if(radius < Constants.ENEMY_MIN_RADIUS)
+            radius = Constants.ENEMY_MIN_RADIUS;
+
         /* calculate position outside of screen for enemy to start */
         int spawn = Rand.getRange(0, 3);
         int x, y;
