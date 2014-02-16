@@ -13,6 +13,15 @@ public class Constants {
     public static int SPLASH_WIDTH = 1280;
     public static int SPLASH_HEIGHT = 720;
 
+    /* enemies */
+    public static int ENEMY_NUMBER = 100;
+    public static float ENEMY_MIN_VELOCITY = 40;
+    public static float ENEMY_MAX_VELOCITY = 100;
+
+    public static float ENEMY_RADIUS_WEIGHT = 0.25f;
+    public static float ENEMY_MIN_RADIUS = 10;
+    public static float ENEMY_MAX_RADIUS = 100;
+
     /* debugging */
     public static boolean DEBUG_LOG = true;
 }

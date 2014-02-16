@@ -13,8 +13,11 @@ import com.jtdev.circlerush.Main;
 
 public class SplashScreen implements Screen {
     private final Main main;
+
     private SpriteBatch spriteBatch;
     private TextureRegion image;
+
+    private long startTime;
 
     public SplashScreen(Main main) {
         Texture texture = new Texture(Constants.SPLASH_IMAGE_PATH);
@@ -31,7 +34,8 @@ public class SplashScreen implements Screen {
         spriteBatch.draw(image, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         spriteBatch.end();
 
-        /*if (TimeUtils.millis() - startTime > Constants.SPLASH_SCREEN_TIME) main.setScreen(new GameScreen());*/
+        if(TimeUtils.millis() - startTime > Constants.SPLASH_SCREEN_TIME)
+            main.setScreen(new GameScreen(this));
     }
 
     @Override
@@ -41,6 +45,7 @@ public class SplashScreen implements Screen {
     @Override
     public void show() {
         spriteBatch = new SpriteBatch();
+        startTime = TimeUtils.millis();
     }
 
     @Override
