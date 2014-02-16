@@ -35,7 +35,7 @@ public class SplashScreen implements Screen {
         spriteBatch.end();
 
         if(TimeUtils.millis() - startTime > Constants.SPLASH_SCREEN_TIME)
-            main.setScreen(new GameScreen(this));
+            main.setScreen(new GameScreen(main));
     }
 
     @Override

@@ -20,9 +20,9 @@ public class Enemy implements Entity {
 
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
 
-    public Enemy(int score) {
+    public Enemy(int score, float min, float max) {
         logger = new Logger(this);
-        radius =  Rand.getRange(Constants.ENEMY_MIN_RADIUS, (score + 1) * Constants.ENEMY_RADIUS_WEIGHT * Constants.ENEMY_MAX_RADIUS);
+        radius = Rand.getRange(min, max);
         velocity = Rand.getRange(Constants.ENEMY_MIN_VELOCITY, Constants.ENEMY_MAX_VELOCITY);
         colour = new Color(Rand.getRange(0.2f, 0.9f), Rand.getRange(0.2f, 0.9f), Rand.getRange(0.2f, 0.9f), 1f);
 

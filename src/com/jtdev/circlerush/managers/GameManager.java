@@ -34,21 +34,24 @@ public class GameManager {
 
         int i;
         for(i = 0; i < Constants.ENEMY_NUMBER; i++) {
-            Enemy enemy = new Enemy(player.getScore());
+            float max = player.getRadius() + Constants.ENEMY_DMAX_RADIUS,
+                  min = player.getRadius() - Constants.ENEMY_DMIN_RADIUS;
+
+            Enemy enemy = new Enemy(player.getScore(), min, max);
             enemyList.add(enemy);
         }
 
         paused = false;
     }
 
-    public void update(float delta) {
+    public int update(float delta) {
         if(inputManager.active)
             paused = false;
         else
             paused = true;
 
         if(paused)
-            return;
+            return 0;
 
         player.setPos(inputManager.pointerx, inputManager.pointery);
         player.update(delta);
@@ -66,22 +69,29 @@ public class GameManager {
             /* outside of screen -- remove enemy */
             if(x + enemy.getRadius() < -camera.viewportWidth || x - enemy.getRadius() > camera.viewportWidth ||
                y + enemy.getRadius() < -camera.viewportHeight || y - enemy.getRadius() > camera.viewportHeight) {
-                enemyList.remove(i);
-                i--;
+                enemyList.remove(i--);
             }
 
             /* collision with player */
             if(enemy.collides(player)) {
-                enemy.setColour(Color.BLACK);
-                /* TODO: check and delete enemy / end game */
+                if(player.getRadius() >= enemy.getRadius()) {
+                    enemyList.remove(i--);
+                    player.incScore();
+                } else {
+                    return 1;
+                }
             }
         }
 
         while(enemyList.size() < Constants.ENEMY_NUMBER) {
-            Enemy enemy = new Enemy(player.getScore());
+            float max = player.getRadius() + Constants.ENEMY_DMAX_RADIUS,
+                    min = player.getRadius() - Constants.ENEMY_DMIN_RADIUS;
+
+            Enemy enemy = new Enemy(player.getScore(), min, max);
             enemyList.add(enemy);
         }
 
+        return 0;
     }
 
     public void draw() {

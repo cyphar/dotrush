@@ -6,14 +6,15 @@ import com.badlogic.gdx.graphics.GL10;
 
 import com.jtdev.circlerush.utils.Logger;
 import com.jtdev.circlerush.entities.World;
+import com.jtdev.circlerush.Main;
 
 public class GameScreen implements Screen {
     private World world;
     private Logger logger;
-    private Object caller;
+    private Main main;
 
-    public GameScreen(Object obj) {
-        caller = obj;
+    public GameScreen(Main main) {
+        this.main = main;
     }
 
     @Override
@@ -29,7 +30,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
-        world = new World();
+        world = new World(main);
         logger = new Logger(this);
     }
 

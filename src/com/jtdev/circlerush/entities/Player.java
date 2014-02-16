@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
+import com.jtdev.circlerush.Constants;
 import com.jtdev.circlerush.utils.Tuple;
 
 public class Player implements Entity {
@@ -17,7 +18,7 @@ public class Player implements Entity {
     public Player() {
         x = y = 0.0f;
         score = 0;
-        radius = 30f;
+        radius = Constants.PLAYER_MIN_RADIUS;
 
         colour = Color.WHITE;
         shapeRenderer = new ShapeRenderer();
@@ -37,6 +38,11 @@ public class Player implements Entity {
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.circle(x, y, radius);
         shapeRenderer.end();
+    }
+
+    public void incScore() {
+        score++;
+        radius++;
     }
 
     public int getScore() {
