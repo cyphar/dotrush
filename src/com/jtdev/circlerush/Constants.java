@@ -8,7 +8,7 @@ public class Constants {
     public static int SCREEN_HEIGHT = Gdx.graphics.getHeight();
 
     /* splash screen */
-    public static int SPLASH_SCREEN_TIME = 500;
+    public static int SPLASH_SCREEN_TIME = 2000;
     public static String SPLASH_IMAGE_PATH = "img/splashscreen.png";
     public static int SPLASH_WIDTH = 1280;
     public static int SPLASH_HEIGHT = 720;

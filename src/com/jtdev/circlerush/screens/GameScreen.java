@@ -46,7 +46,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void resume() {
-        world.resume();
+        main.setScreen(new SplashScreen(main));
     }
 
     @Override
