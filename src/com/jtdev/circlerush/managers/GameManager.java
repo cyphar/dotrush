@@ -18,12 +18,18 @@ public class GameManager {
     private Logger logger;
 
     private Camera camera;
+    private InputManager inputManager;
+
     private boolean paused;
 
     public GameManager(Camera cam) {
         player = new Player();
         enemyList = new ArrayList<Enemy>();
+
         camera = cam;
+        inputManager = new InputManager();
+        Gdx.input.setInputProcessor(inputManager);
+
         logger = new Logger(this);
 
         int i;
@@ -36,9 +42,15 @@ public class GameManager {
     }
 
     public void update(float delta) {
+        if(inputManager.active)
+            paused = false;
+        else
+            paused = true;
+
         if(paused)
             return;
 
+        player.setPos(inputManager.pointerx, inputManager.pointery);
         player.update(delta);
 
         int i;
