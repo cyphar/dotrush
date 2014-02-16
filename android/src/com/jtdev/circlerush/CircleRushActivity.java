@@ -19,6 +19,6 @@ public class CircleRushActivity extends AndroidApplication {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        initialize(new Main(), cfg);
+        initialize(new CircleRush(), cfg);
     }
 }
