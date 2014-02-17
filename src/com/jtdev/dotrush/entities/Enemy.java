@@ -1,14 +1,14 @@
-package com.jtdev.circlerush.entities;
+package com.jtdev.dotrush.entities;
 
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
-import com.jtdev.circlerush.Constants;
-import com.jtdev.circlerush.utils.Logger;
-import com.jtdev.circlerush.utils.Tuple;
-import com.jtdev.circlerush.utils.Rand;
+import com.jtdev.dotrush.Constants;
+import com.jtdev.dotrush.utils.Logger;
+import com.jtdev.dotrush.utils.Tuple;
+import com.jtdev.dotrush.utils.Rand;
 
 public class Enemy implements Entity {
     private Logger logger;

@@ -1,4 +1,4 @@
-circle-rush
------------
+dotrush
+-------
 
-A game where you get Circle Rush'd.
+A game where you get Dot Rush'd.

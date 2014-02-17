@@ -1,7 +1,6 @@
-package com.jtdev.circlerush.entities;
+package com.jtdev.dotrush.entities;
 
 import com.badlogic.gdx.graphics.Camera;
-import com.jtdev.circlerush.utils.Tuple;
 
 public class Background{
     public void update(float delta) {

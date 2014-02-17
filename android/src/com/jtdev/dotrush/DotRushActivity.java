@@ -1,4 +1,4 @@
-package com.jtdev.circlerush;
+package com.jtdev.dotrush;
 
 import android.os.Bundle;
 
@@ -8,7 +8,7 @@ import android.view.WindowManager;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 
-public class CircleRushActivity extends AndroidApplication {
+public class DotRushActivity extends AndroidApplication {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +19,6 @@ public class CircleRushActivity extends AndroidApplication {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        initialize(new CircleRush(), cfg);
+        initialize(new DotRush(), cfg);
     }
 }

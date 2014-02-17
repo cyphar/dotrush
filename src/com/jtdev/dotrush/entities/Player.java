@@ -1,11 +1,11 @@
-package com.jtdev.circlerush.entities;
+package com.jtdev.dotrush.entities;
 
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-import com.jtdev.circlerush.Constants;
-import com.jtdev.circlerush.utils.Tuple;
+import com.jtdev.dotrush.Constants;
+import com.jtdev.dotrush.utils.Tuple;
 
 public class Player implements Entity {
     private int score;

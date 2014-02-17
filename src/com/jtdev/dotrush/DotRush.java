@@ -1,12 +1,12 @@
-package com.jtdev.circlerush;
+package com.jtdev.dotrush;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 
-import com.jtdev.circlerush.screens.SplashScreen;
-import com.jtdev.circlerush.utils.Logger;
+import com.jtdev.dotrush.screens.SplashScreen;
+import com.jtdev.dotrush.utils.Logger;
 
-public class CircleRush extends Game {
+public class DotRush extends Game {
     private Logger logger;
 
     @Override

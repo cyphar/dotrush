@@ -1,19 +1,19 @@
-package com.jtdev.circlerush.screens;
+package com.jtdev.dotrush.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 
-import com.jtdev.circlerush.CircleRush;
-import com.jtdev.circlerush.utils.Logger;
-import com.jtdev.circlerush.entities.World;
+import com.jtdev.dotrush.DotRush;
+import com.jtdev.dotrush.utils.Logger;
+import com.jtdev.dotrush.entities.World;
 
 public class GameScreen implements Screen {
     private World world;
     private Logger logger;
-    private CircleRush main;
+    private DotRush main;
 
-    public GameScreen(CircleRush main) {
+    public GameScreen(DotRush main) {
         this.main = main;
     }
 

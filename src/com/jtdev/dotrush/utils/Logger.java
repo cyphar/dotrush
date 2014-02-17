@@ -1,7 +1,7 @@
-package com.jtdev.circlerush.utils;
+package com.jtdev.dotrush.utils;
 
 import com.badlogic.gdx.Gdx;
-import com.jtdev.circlerush.Constants;
+import com.jtdev.dotrush.Constants;
 
 public class Logger {
     private String name;

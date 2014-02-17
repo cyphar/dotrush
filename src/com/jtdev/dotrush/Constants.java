@@ -1,4 +1,4 @@
-package com.jtdev.circlerush;
+package com.jtdev.dotrush;
 
 import com.badlogic.gdx.Gdx;
 

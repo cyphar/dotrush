@@ -1,8 +1,8 @@
-package com.jtdev.circlerush.entities;
+package com.jtdev.dotrush.entities;
 
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
-import com.jtdev.circlerush.utils.Tuple;
+import com.jtdev.dotrush.utils.Tuple;
 
 public interface Entity {
     public void update(float delta);

@@ -1,4 +1,4 @@
-package com.jtdev.circlerush.utils;
+package com.jtdev.dotrush.utils;
 
 import java.lang.Math;
 

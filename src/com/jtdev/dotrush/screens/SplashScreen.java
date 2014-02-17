@@ -1,4 +1,4 @@
-package com.jtdev.circlerush.screens;
+package com.jtdev.dotrush.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -8,18 +8,18 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.TimeUtils;
 
-import com.jtdev.circlerush.CircleRush;
-import com.jtdev.circlerush.Constants;
+import com.jtdev.dotrush.DotRush;
+import com.jtdev.dotrush.Constants;
 
 public class SplashScreen implements Screen {
-    private final CircleRush main;
+    private final DotRush main;
 
     private SpriteBatch spriteBatch;
     private TextureRegion image;
 
     private long startTime;
 
-    public SplashScreen(CircleRush main) {
+    public SplashScreen(DotRush main) {
         Texture texture = new Texture(Constants.SPLASH_IMAGE_PATH);
         image = new TextureRegion(texture, Constants.SPLASH_WIDTH, Constants.SPLASH_HEIGHT);
 

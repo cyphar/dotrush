@@ -1,4 +1,4 @@
-package com.jtdev.circlerush.utils;
+package com.jtdev.dotrush.utils;
 
 public class Tuple<X, Y> {
     public final X x;

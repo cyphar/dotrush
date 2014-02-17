@@ -1,16 +1,15 @@
-package com.jtdev.circlerush.managers;
+package com.jtdev.dotrush.managers;
 
 import java.util.*;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.Color;
 
-import com.jtdev.circlerush.Constants;
-import com.jtdev.circlerush.entities.Enemy;
-import com.jtdev.circlerush.entities.Player;
-import com.jtdev.circlerush.utils.Logger;
-import com.jtdev.circlerush.utils.Tuple;
+import com.jtdev.dotrush.Constants;
+import com.jtdev.dotrush.entities.Enemy;
+import com.jtdev.dotrush.entities.Player;
+import com.jtdev.dotrush.utils.Logger;
+import com.jtdev.dotrush.utils.Tuple;
 
 public class GameManager {
     private List<Enemy> enemyList;

@@ -1,7 +1,7 @@
-package com.jtdev.circlerush.managers;
+package com.jtdev.dotrush.managers;
 
 import com.badlogic.gdx.InputProcessor;
-import com.jtdev.circlerush.Constants;
+import com.jtdev.dotrush.Constants;
 
 public class InputManager implements InputProcessor {
     public int pointerx, pointery;
