@@ -3,10 +3,7 @@
   <component name="FacetManager">
     <facet type="android" name="Android">
       <configuration>
-        <option name="APK_PATH" value="/../out/android/circlerush.apk" />
-        <proGuardCfgFiles>
-          <file>file:///opt/android-sdk/tools/proguard/proguard-android.txt</file>
-        </proGuardCfgFiles>
+        <option name="APK_PATH" value="/../out/android/dotrush.apk" />
         <option name="UPDATE_PROPERTY_FILES" value="true" />
         <includeAssetsFromLibraries>true</includeAssetsFromLibraries>
       </configuration>
