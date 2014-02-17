@@ -10,8 +10,10 @@ public class Constants {
     /* splash screen */
     public static int SPLASH_SCREEN_TIME = 2000;
     public static String SPLASH_IMAGE_PATH = "img/splashscreen.png";
-    public static int SPLASH_WIDTH = 1280;
-    public static int SPLASH_HEIGHT = 720;
+
+    public static float SPLASH_WIDTH = 1820;
+    public static float SPLASH_HEIGHT = 1024;
+    public static float SPLASH_RATIO = SPLASH_HEIGHT / SPLASH_WIDTH;
 
     /* enemies */
     public static int ENEMY_NUMBER = 100;

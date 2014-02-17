@@ -7,11 +7,16 @@ public class Logger {
     private String name;
 
     public Logger(Object obj) {
-        name = obj.getClass().getSimpleName() + "[DEBUG]";
+        name = obj.getClass().getSimpleName();
     }
 
     public void log(String message) {
         if(Constants.DEBUG_LOG)
-            Gdx.app.log(name, message);
+            Gdx.app.log("[DEBUG] " + name, message);
+    }
+
+    public void warn(String message) {
+        if(Constants.DEBUG_LOG)
+            Gdx.app.log("[WARN] " + name, message);
     }
 }
