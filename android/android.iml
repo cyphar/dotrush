@@ -3,7 +3,10 @@
   <component name="FacetManager">
     <facet type="android" name="Android">
       <configuration>
-        <option name="APK_PATH" value="../out/android/circlerush.apk" />
+        <option name="APK_PATH" value="/../out/android/circlerush.apk" />
+        <proGuardCfgFiles>
+          <file>file:///opt/android-sdk/tools/proguard/proguard-android.txt</file>
+        </proGuardCfgFiles>
         <option name="UPDATE_PROPERTY_FILES" value="true" />
         <includeAssetsFromLibraries>true</includeAssetsFromLibraries>
       </configuration>
@@ -15,7 +18,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
     </content>
-    <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 14 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="android-libs" level="project" />
     <orderEntry type="module" module-name="core" />
