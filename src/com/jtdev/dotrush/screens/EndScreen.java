@@ -1,38 +1,36 @@
 package com.jtdev.dotrush.screens;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL10;
-
 import com.jtdev.dotrush.DotRush;
 import com.jtdev.dotrush.utils.Logger;
-import com.jtdev.dotrush.entities.World;
 
-public class GameScreen implements Screen {
-    private World world;
+public class EndScreen implements Screen {
     private Logger logger;
     private DotRush main;
 
-    public GameScreen(DotRush main) {
-        this.main = main;
+    private int score;
 
-        world = new World(main);
+    public EndScreen(DotRush main, int score) {
+        this.main = main;
+        this.score = score;
+
         logger = new Logger(this);
     }
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        world.render(delta);
+        logger.log("switch from EndScreen(" + score + ") to GameScreen");
+        main.setScreen(new GameScreen(this.main));
     }
 
     @Override
     public void resize(int width, int height) {
-        logger.log("tried to resize screen to " + width + "x" + height);
+
     }
 
     @Override
     public void show() {
+
     }
 
     @Override
@@ -42,12 +40,12 @@ public class GameScreen implements Screen {
 
     @Override
     public void pause() {
-        world.pause();
+
     }
 
     @Override
     public void resume() {
-        main.setScreen(new SplashScreen(main));
+
     }
 
     @Override

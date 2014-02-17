@@ -8,7 +8,6 @@ import com.jtdev.dotrush.Constants;
 import com.jtdev.dotrush.utils.Tuple;
 
 public class Player implements Entity {
-    private int score;
     private float radius;
     private float x, y;
 
@@ -38,13 +37,8 @@ public class Player implements Entity {
         shapeRenderer.end();
     }
 
-    public void incScore() {
-        score++;
-        radius++;
-    }
-
-    public int getScore() {
-        return score;
+    public void updRadius(int score) {
+        radius = Constants.PLAYER_MIN_RADIUS + score;
     }
 
     @Override

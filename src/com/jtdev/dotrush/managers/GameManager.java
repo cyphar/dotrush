@@ -19,6 +19,7 @@ public class GameManager {
     private Camera camera;
     private InputManager inputManager;
 
+    private int score;
     private boolean started;
 
     public GameManager(Camera cam) {
@@ -36,7 +37,7 @@ public class GameManager {
             float max = player.getRadius() + Constants.ENEMY_DMAX_RADIUS,
                   min = player.getRadius() - Constants.ENEMY_DMIN_RADIUS;
 
-            Enemy enemy = new Enemy(player.getScore(), min, max);
+            Enemy enemy = new Enemy(score, min, max);
             enemyList.add(enemy);
         }
 
@@ -71,12 +72,11 @@ public class GameManager {
 
             /* collision with player */
             if(enemy.collides(player)) {
-                if(player.getRadius() >= enemy.getRadius()) {
-                    enemyList.remove(i--);
-                    player.incScore();
-                } else {
+                if(player.getRadius() < enemy.getRadius())
                     return 1;
-                }
+
+                enemyList.remove(i--);
+                player.updRadius(++score);
             }
         }
 
@@ -84,7 +84,7 @@ public class GameManager {
             float max = player.getRadius() + Constants.ENEMY_DMAX_RADIUS,
                     min = player.getRadius() - Constants.ENEMY_DMIN_RADIUS;
 
-            Enemy enemy = new Enemy(player.getScore(), min, max);
+            Enemy enemy = new Enemy(score, min, max);
             enemyList.add(enemy);
         }
 
@@ -100,10 +100,16 @@ public class GameManager {
     }
 
     public void pause() {
-        started = true;
     }
 
     public void resume() {
-        started = false;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }
