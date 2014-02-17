@@ -19,7 +19,7 @@ public class GameManager {
     private Camera camera;
     private InputManager inputManager;
 
-    private boolean paused;
+    private boolean started;
 
     public GameManager(Camera cam) {
         player = new Player();
@@ -40,16 +40,14 @@ public class GameManager {
             enemyList.add(enemy);
         }
 
-        paused = false;
+        started = false;
     }
 
     public int update(float delta) {
         if(inputManager.active)
-            paused = false;
-        else
-            paused = true;
+            started = true;
 
-        if(paused)
+        if(!started)
             return 0;
 
         player.setPos(inputManager.pointerx, inputManager.pointery);
@@ -102,10 +100,10 @@ public class GameManager {
     }
 
     public void pause() {
-        paused = true;
+        started = true;
     }
 
     public void resume() {
-        paused = false;
+        started = false;
     }
 }
