@@ -16,8 +16,6 @@ public class Player implements Entity {
     private ShapeRenderer shapeRenderer;
 
     public Player() {
-        x = y = 0.0f;
-        score = 0;
         radius = Constants.PLAYER_MIN_RADIUS;
 
         colour = Color.WHITE;
@@ -61,8 +59,12 @@ public class Player implements Entity {
 
     @Override
     public void setPos(float x, float y) {
-        this.x = x;
-        this.y = y;
+        float touchRadius = radius + Constants.PLAYER_TOUCH_RADIUS;
+
+        if(Math.sqrt(Math.pow(this.x - x, 2) + Math.pow(this.y - y, 2)) <= touchRadius) {
+            this.x = x;
+            this.y = y;
+        }
     }
 
     @Override

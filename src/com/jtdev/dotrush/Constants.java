@@ -26,6 +26,7 @@ public class Constants {
 
     /* player */
     public static float PLAYER_MIN_RADIUS = 25;
+    public static float PLAYER_TOUCH_RADIUS = 80;
 
     /* debugging */
     public static boolean DEBUG_LOG = true;
