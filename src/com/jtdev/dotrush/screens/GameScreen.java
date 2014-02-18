@@ -14,10 +14,10 @@ public class GameScreen implements Screen {
     private DotRush main;
 
     public GameScreen(DotRush main) {
-        this.main = main;
-
         world = new World(main);
         logger = new Logger(this);
+
+        this.main = main;
     }
 
     @Override

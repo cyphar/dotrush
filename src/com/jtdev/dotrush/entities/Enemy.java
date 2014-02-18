@@ -59,12 +59,14 @@ public class Enemy implements Entity {
 
         this.x = x;
         this.y = y;
+
+        angle = (float) Math.toRadians(angle);
     }
 
     @Override
     public void update(float delta) {
-        float dx = velocity * (float) Math.cos(Math.toRadians(angle)) * delta;
-        float dy = velocity * (float) Math.sin(Math.toRadians(angle)) * delta;
+        float dx = velocity * (float) Math.cos(angle) * delta;
+        float dy = velocity * (float) Math.sin(angle) * delta;
 
         x += dx;
         y += dy;
@@ -78,12 +80,7 @@ public class Enemy implements Entity {
 
     @Override
     public Tuple<Float, Float> getPos() {
-        Float x, y;
-
-        x = this.x;
-        y = this.y;
-
-        return new Tuple<Float, Float>(x, y);
+        return new Tuple<Float, Float>(this.x, this.y);
     }
 
     @Override
