@@ -71,14 +71,9 @@ public class Enemy implements Entity {
     }
 
     @Override
-    public void draw(Camera camera) {
-        camera.update();
-        shapeRenderer.setProjectionMatrix(camera.combined);
+    public void draw(ShapeRenderer shapeRenderer) {
         shapeRenderer.setColor(colour);
-
-        shapeRenderer.begin(ShapeType.Filled);
         shapeRenderer.circle(x, y, radius);
-        shapeRenderer.end();
     }
 
     @Override

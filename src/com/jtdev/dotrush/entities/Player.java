@@ -27,14 +27,9 @@ public class Player implements Entity {
     }
 
     @Override
-    public void draw(Camera camera) {
-        camera.update();
-        shapeRenderer.setProjectionMatrix(camera.combined);
+    public void draw(ShapeRenderer shapeRenderer) {
         shapeRenderer.setColor(colour);
-
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         shapeRenderer.circle(x, y, radius);
-        shapeRenderer.end();
     }
 
     public void updRadius(int score) {

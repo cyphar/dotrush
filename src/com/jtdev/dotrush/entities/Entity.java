@@ -2,11 +2,12 @@ package com.jtdev.dotrush.entities;
 
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.jtdev.dotrush.utils.Tuple;
 
 public interface Entity {
     public void update(float delta);
-    public void draw(Camera camera);
+    public void draw(ShapeRenderer shapeRenderer);
 
     public boolean collides(Entity other);
 

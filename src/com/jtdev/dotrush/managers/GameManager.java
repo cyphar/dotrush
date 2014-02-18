@@ -5,6 +5,7 @@ import java.util.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.jtdev.dotrush.Constants;
 import com.jtdev.dotrush.entities.Enemy;
 import com.jtdev.dotrush.entities.Player;
@@ -92,11 +93,18 @@ public class GameManager {
     }
 
     public void draw() {
+        ShapeRenderer shapeRenderer = new ShapeRenderer();
+
+        camera.update();
+        shapeRenderer.setProjectionMatrix(camera.combined);
+
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
         for(Enemy enemy: enemyList) {
-            enemy.draw(camera);
+            enemy.draw(shapeRenderer);
         }
 
-        player.draw(camera);
+        player.draw(shapeRenderer);
+        shapeRenderer.end();
     }
 
     public void pause() {
