@@ -9,6 +9,7 @@ public class Constants {
 
     /* font */
     public static String GAME_FONT_PATH = "fonts/comfortaa.fnt";
+    public static float GAME_FONT_SCALE = -0.25f;
 
     /* score */
     public static int SCORE_Y = SCREEN_HEIGHT - 10;

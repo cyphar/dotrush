@@ -18,6 +18,7 @@ public class DotRush extends Game {
         logger.log("starting game in type: " + Gdx.app.getType());
 
         gamefont = new BitmapFont(Gdx.files.internal(Constants.GAME_FONT_PATH), false);
+        gamefont.scale(Constants.GAME_FONT_SCALE);
 
         setScreen(new SplashScreen(this));
     }
