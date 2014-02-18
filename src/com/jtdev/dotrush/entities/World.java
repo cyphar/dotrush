@@ -1,5 +1,6 @@
 package com.jtdev.dotrush.entities;
 
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 import com.jtdev.dotrush.Constants;
@@ -8,17 +9,19 @@ import com.jtdev.dotrush.managers.GameManager;
 import com.jtdev.dotrush.screens.EndScreen;
 import com.jtdev.dotrush.utils.Logger;
 
-public class World{
-    private GameManager manager;
+public class World {
     private Logger logger;
     private DotRush main;
 
+    private GameManager manager;
     private int score;
 
-    public World(DotRush caller) {
-        manager = new GameManager(new OrthographicCamera(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT));
+    public World(DotRush main) {
+        Camera camera = new OrthographicCamera(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+        manager = new GameManager(main, camera);
+
         logger = new Logger(this);
-        main = caller;
+        this.main = main;
     }
 
     public void render(float delta) {

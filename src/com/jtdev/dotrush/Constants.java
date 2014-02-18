@@ -7,9 +7,16 @@ public class Constants {
     public static int SCREEN_WIDTH = Gdx.graphics.getWidth();
     public static int SCREEN_HEIGHT = Gdx.graphics.getHeight();
 
+    /* font */
+    public static String GAME_FONT_PATH = "fonts/comfortaa.fnt";
+
+    /* score */
+    public static int SCORE_Y = SCREEN_HEIGHT - 10;
+    public static int SCORE_X = 10;
+
     /* splash screen */
     public static int SPLASH_SCREEN_TIME = 2000;
-    public static String SPLASH_IMAGE_PATH = "img/splashscreen.png";
+    public static String SPLASH_IMAGE_PATH = "images/splashscreen.png";
 
     public static float SPLASH_WIDTH = 1820;
     public static float SPLASH_HEIGHT = 1024;

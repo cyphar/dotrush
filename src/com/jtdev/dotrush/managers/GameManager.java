@@ -5,8 +5,11 @@ import java.util.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.jtdev.dotrush.Constants;
+import com.jtdev.dotrush.DotRush;
 import com.jtdev.dotrush.entities.Enemy;
 import com.jtdev.dotrush.entities.Player;
 import com.jtdev.dotrush.utils.Logger;
@@ -15,7 +18,9 @@ import com.jtdev.dotrush.utils.Tuple;
 public class GameManager {
     private List<Enemy> enemyList;
     private Player player;
+
     private Logger logger;
+    private DotRush main;
 
     private Camera camera;
     private InputManager inputManager;
@@ -23,11 +28,13 @@ public class GameManager {
     private int score;
     private boolean started;
 
-    public GameManager(Camera cam) {
+    public GameManager(DotRush main, Camera camera) {
         player = new Player();
         enemyList = new ArrayList<Enemy>();
 
-        camera = cam;
+        this.camera = camera;
+        this.main = main;
+
         inputManager = new InputManager();
         Gdx.input.setInputProcessor(inputManager);
 
@@ -105,6 +112,15 @@ public class GameManager {
 
         player.draw(shapeRenderer);
         shapeRenderer.end();
+
+        SpriteBatch spriteBatch = new SpriteBatch();
+        BitmapFont font = main.gamefont;
+
+        spriteBatch.begin();
+        font.setColor(1, 1, 1, 1);
+        font.draw(spriteBatch, "Score: " + score, Constants.SCORE_X, Constants.SCORE_Y);
+        spriteBatch.end();
+
     }
 
     public void pause() {

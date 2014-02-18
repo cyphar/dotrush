@@ -17,7 +17,7 @@ public class StartScreen implements Screen {
     @Override
     public void render(float delta) {
         logger.log("switch from StartScreen to GameScreen");
-        main.setScreen(new GameScreen(this.main));
+        main.setScreen(new GameScreen(main));
     }
 
     @Override
