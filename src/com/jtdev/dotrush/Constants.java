@@ -16,9 +16,9 @@ public class Constants {
     public static float SPLASH_RATIO = SPLASH_HEIGHT / SPLASH_WIDTH;
 
     /* enemies */
-    public static int ENEMY_NUMBER = 100;
-    public static float ENEMY_MIN_VELOCITY = 40;
-    public static float ENEMY_MAX_VELOCITY = 100;
+    public static int ENEMY_NUMBER = 150;
+    public static float ENEMY_MIN_VELOCITY = 80;
+    public static float ENEMY_MAX_VELOCITY = 160;
 
     public static float ENEMY_DMIN_RADIUS = 45; /* 45 less than player */
     public static float ENEMY_DMAX_RADIUS = 35; /* 35 more than player */
