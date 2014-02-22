@@ -15,6 +15,8 @@ public class DotRushActivity extends AndroidApplication {
         super.onCreate(savedInstanceState);
 
         AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
+        cfg.useAccelerometer = false;
+        cfg.useCompass = false;
         cfg.useGL20 = false;
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);

@@ -1,6 +1,7 @@
 package com.jtdev.dotrush.screens;
 
 import com.badlogic.gdx.Screen;
+
 import com.jtdev.dotrush.managers.ScreenManager;
 import com.jtdev.dotrush.utils.Logger;
 

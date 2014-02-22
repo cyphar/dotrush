@@ -5,6 +5,7 @@ import java.util.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
@@ -24,6 +25,10 @@ public class GameManager {
     private Camera camera;
     private InputManager inputManager;
 
+    private ShapeRenderer shapeRenderer;
+    private SpriteBatch spriteBatch;
+    private BitmapFont font;
+
     private int score;
     private boolean started;
 
@@ -38,6 +43,10 @@ public class GameManager {
         Gdx.input.setInputProcessor(inputManager);
 
         logger = new Logger(this);
+
+        shapeRenderer = new ShapeRenderer();
+        spriteBatch = new SpriteBatch();
+        font = screenManager.getMain().gamefont;
 
         int i;
         for(i = 0; i < Constants.ENEMY_NUMBER; i++) {
@@ -99,27 +108,19 @@ public class GameManager {
     }
 
     public void draw() {
-        ShapeRenderer shapeRenderer = new ShapeRenderer();
-
         camera.update();
         shapeRenderer.setProjectionMatrix(camera.combined);
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        for(Enemy enemy: enemyList) {
+        for(Enemy enemy: enemyList)
             enemy.draw(shapeRenderer);
-        }
-
         player.draw(shapeRenderer);
         shapeRenderer.end();
-
-        SpriteBatch spriteBatch = new SpriteBatch();
-        BitmapFont font = screenManager.getMain().gamefont;
 
         spriteBatch.begin();
         font.setColor(1, 1, 1, 1);
         font.draw(spriteBatch, "Score: " + score, Constants.SCORE_X, Constants.SCORE_Y);
         spriteBatch.end();
-
     }
 
     public void pause() {
