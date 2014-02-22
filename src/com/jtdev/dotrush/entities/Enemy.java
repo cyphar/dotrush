@@ -18,8 +18,6 @@ public class Enemy implements Entity {
     private float velocity, angle;
     private float x, y;
 
-    private ShapeRenderer shapeRenderer = new ShapeRenderer();
-
     public Enemy(int score, float min, float max) {
         logger = new Logger(this);
         radius = Rand.getRange(min, max);

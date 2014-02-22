@@ -8,12 +8,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.TimeUtils;
 
-import com.jtdev.dotrush.DotRush;
 import com.jtdev.dotrush.Constants;
+import com.jtdev.dotrush.managers.ScreenManager;
 import com.jtdev.dotrush.utils.Logger;
 
 public class SplashScreen implements Screen {
-    private final DotRush main;
+    private final ScreenManager screenManager;
     private Logger logger;
 
     private SpriteBatch spriteBatch;
@@ -21,12 +21,13 @@ public class SplashScreen implements Screen {
 
     private long startTime;
 
-    public SplashScreen(DotRush main) {
+    public SplashScreen(ScreenManager screenManager) {
         Texture texture = new Texture(Gdx.files.internal(Constants.SPLASH_IMAGE_PATH));
         image = new TextureRegion(texture, 0, 0, (int) Constants.SPLASH_WIDTH, (int) Constants.SPLASH_HEIGHT);
+        spriteBatch = new SpriteBatch();
 
         logger = new Logger(this);
-        this.main = main;
+        this.screenManager = screenManager;
     }
 
     @Override
@@ -42,7 +43,7 @@ public class SplashScreen implements Screen {
         spriteBatch.end();
 
         if(TimeUtils.millis() - startTime > Constants.SPLASH_SCREEN_TIME)
-            main.setScreen(new StartScreen(main));
+            screenManager.setScreen(new StartScreen(screenManager));
     }
 
     @Override

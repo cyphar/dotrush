@@ -4,12 +4,11 @@ import java.util.*;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
-
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+
 import com.jtdev.dotrush.Constants;
-import com.jtdev.dotrush.DotRush;
 import com.jtdev.dotrush.entities.Enemy;
 import com.jtdev.dotrush.entities.Player;
 import com.jtdev.dotrush.utils.Logger;
@@ -20,7 +19,7 @@ public class GameManager {
     private Player player;
 
     private Logger logger;
-    private DotRush main;
+    private ScreenManager screenManager;
 
     private Camera camera;
     private InputManager inputManager;
@@ -28,12 +27,12 @@ public class GameManager {
     private int score;
     private boolean started;
 
-    public GameManager(DotRush main, Camera camera) {
+    public GameManager(ScreenManager screenManager, Camera camera) {
         player = new Player();
         enemyList = new ArrayList<Enemy>();
 
         this.camera = camera;
-        this.main = main;
+        this.screenManager = screenManager;
 
         inputManager = new InputManager();
         Gdx.input.setInputProcessor(inputManager);
@@ -43,7 +42,7 @@ public class GameManager {
         int i;
         for(i = 0; i < Constants.ENEMY_NUMBER; i++) {
             float max = player.getRadius() + Constants.ENEMY_DMAX_RADIUS,
-                  min = player.getRadius() - Constants.ENEMY_DMIN_RADIUS;
+                    min = player.getRadius() - Constants.ENEMY_DMIN_RADIUS;
 
             Enemy enemy = new Enemy(score, min, max);
             enemyList.add(enemy);
@@ -114,7 +113,7 @@ public class GameManager {
         shapeRenderer.end();
 
         SpriteBatch spriteBatch = new SpriteBatch();
-        BitmapFont font = main.gamefont;
+        BitmapFont font = screenManager.getMain().gamefont;
 
         spriteBatch.begin();
         font.setColor(1, 1, 1, 1);

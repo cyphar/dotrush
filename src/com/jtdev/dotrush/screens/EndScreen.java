@@ -1,17 +1,17 @@
 package com.jtdev.dotrush.screens;
 
 import com.badlogic.gdx.Screen;
-import com.jtdev.dotrush.DotRush;
+import com.jtdev.dotrush.managers.ScreenManager;
 import com.jtdev.dotrush.utils.Logger;
 
 public class EndScreen implements Screen {
     private Logger logger;
-    private DotRush main;
+    private ScreenManager screenManager;
 
     private int score;
 
-    public EndScreen(DotRush main, int score) {
-        this.main = main;
+    public EndScreen(ScreenManager screenManager, int score) {
+        this.screenManager = screenManager;
         this.score = score;
 
         logger = new Logger(this);
@@ -20,7 +20,7 @@ public class EndScreen implements Screen {
     @Override
     public void render(float delta) {
         logger.log("switch from EndScreen(" + score + ") to GameScreen");
-        main.setScreen(new GameScreen(this.main));
+        screenManager.setScreen(new GameScreen(screenManager));
     }
 
     @Override

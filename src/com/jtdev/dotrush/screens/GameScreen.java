@@ -4,20 +4,21 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 
-import com.jtdev.dotrush.DotRush;
 import com.jtdev.dotrush.utils.Logger;
+import com.jtdev.dotrush.managers.ScreenManager;
 import com.jtdev.dotrush.entities.World;
 
 public class GameScreen implements Screen {
-    private World world;
+    private final ScreenManager screenManager;
     private Logger logger;
-    private DotRush main;
 
-    public GameScreen(DotRush main) {
-        world = new World(main);
+    private World world;
+
+    public GameScreen(ScreenManager screenManager) {
+        world = new World(screenManager);
         logger = new Logger(this);
 
-        this.main = main;
+        this.screenManager = screenManager;
     }
 
     @Override
@@ -47,7 +48,9 @@ public class GameScreen implements Screen {
 
     @Override
     public void resume() {
-        main.setScreen(new SplashScreen(main));
+        /*
+        screenManager.setScreen(new GameScreen(screenManager));
+        */
     }
 
     @Override

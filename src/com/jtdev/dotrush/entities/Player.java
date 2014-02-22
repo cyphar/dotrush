@@ -12,13 +12,10 @@ public class Player implements Entity {
     private float x, y;
 
     private Color colour;
-    private ShapeRenderer shapeRenderer;
 
     public Player() {
         radius = Constants.PLAYER_MIN_RADIUS;
-
         colour = Color.WHITE;
-        shapeRenderer = new ShapeRenderer();
     }
 
     @Override

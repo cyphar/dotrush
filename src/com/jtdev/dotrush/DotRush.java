@@ -4,11 +4,13 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
+import com.jtdev.dotrush.managers.ScreenManager;
 import com.jtdev.dotrush.screens.SplashScreen;
 import com.jtdev.dotrush.utils.Logger;
 
 public class DotRush extends Game {
     private Logger logger;
+    private ScreenManager screenManager;
 
     public BitmapFont gamefont;
 
@@ -20,6 +22,9 @@ public class DotRush extends Game {
         gamefont = new BitmapFont(Gdx.files.internal(Constants.GAME_FONT_PATH), false);
         gamefont.scale(Constants.GAME_FONT_SCALE);
 
-        setScreen(new SplashScreen(this));
+        screenManager = new ScreenManager(this);
+        screenManager.setScreen(new SplashScreen(screenManager));
+
+        setScreen(screenManager);
     }
 }

@@ -1,23 +1,22 @@
 package com.jtdev.dotrush.screens;
 
 import com.badlogic.gdx.Screen;
-
-import com.jtdev.dotrush.DotRush;
+import com.jtdev.dotrush.managers.ScreenManager;
 import com.jtdev.dotrush.utils.Logger;
 
 public class StartScreen implements Screen {
     private Logger logger;
-    private DotRush main;
+    private ScreenManager screenManager;
 
-    public StartScreen(DotRush main) {
-        this.main = main;
+    public StartScreen(ScreenManager screenManager) {
+        this.screenManager = screenManager;
         logger = new Logger(this);
     }
 
     @Override
     public void render(float delta) {
         logger.log("switch from StartScreen to GameScreen");
-        main.setScreen(new GameScreen(main));
+        screenManager.setScreen(new GameScreen(screenManager));
     }
 
     @Override

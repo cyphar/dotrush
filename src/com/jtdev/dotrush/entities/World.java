@@ -4,38 +4,39 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 import com.jtdev.dotrush.Constants;
-import com.jtdev.dotrush.DotRush;
+import com.jtdev.dotrush.managers.ScreenManager;
 import com.jtdev.dotrush.managers.GameManager;
 import com.jtdev.dotrush.screens.EndScreen;
 import com.jtdev.dotrush.utils.Logger;
 
 public class World {
     private Logger logger;
-    private DotRush main;
 
-    private GameManager manager;
+    private ScreenManager screenManager;
+    private GameManager gameManager;
+
     private int score;
 
-    public World(DotRush main) {
+    public World(ScreenManager screenManager) {
         Camera camera = new OrthographicCamera(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
-        manager = new GameManager(main, camera);
+        gameManager = new GameManager(screenManager, camera);
 
         logger = new Logger(this);
-        this.main = main;
+        this.screenManager = screenManager;
     }
 
     public void render(float delta) {
-        if(manager.update(delta) != 0)
-            main.setScreen(new EndScreen(main, manager.getScore()));
+        if(gameManager.update(delta) != 0)
+            screenManager.setScreen(new EndScreen(screenManager, gameManager.getScore()));
 
-        manager.draw();
+        gameManager.draw();
     }
 
     public void pause() {
-        manager.pause();
+        gameManager.pause();
     }
 
     public void resume() {
-        manager.resume();
+        gameManager.resume();
     }
 }
