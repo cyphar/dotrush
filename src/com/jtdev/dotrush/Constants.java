@@ -7,6 +7,10 @@ public class Constants {
     public static int SCREEN_WIDTH = Gdx.graphics.getWidth();
     public static int SCREEN_HEIGHT = Gdx.graphics.getHeight();
 
+    /* music */
+    public static String GAME_MUSIC_PATH = "audio/soundtrack-loop.ogg";
+    public static float GAME_MUSIC_VOLUME = 0.05f;
+
     /* font */
     public static String GAME_FONT_PATH = "fonts/comfortaa.fnt";
     public static float GAME_FONT_SCALE = -0.25f;

@@ -28,8 +28,8 @@ public class World {
     public void render(float delta) {
         if(gameManager.update(delta) != 0)
             screenManager.setScreen(new EndScreen(screenManager, gameManager.getScore()));
-
-        gameManager.draw();
+        else
+            gameManager.draw();
     }
 
     public void pause() {

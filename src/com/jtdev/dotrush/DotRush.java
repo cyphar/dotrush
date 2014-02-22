@@ -2,6 +2,7 @@ package com.jtdev.dotrush;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 import com.jtdev.dotrush.managers.ScreenManager;
@@ -13,6 +14,7 @@ public class DotRush extends Game {
     private ScreenManager screenManager;
 
     public BitmapFont gamefont;
+    public Music music;
 
     @Override
     public void create() {
@@ -25,6 +27,12 @@ public class DotRush extends Game {
         screenManager = new ScreenManager(this);
         screenManager.setScreen(new SplashScreen(screenManager));
 
+        /* music is http://radtunez.com/ */
+        music = Gdx.audio.newMusic(Gdx.files.internal(Constants.GAME_MUSIC_PATH));
+        music.setLooping(true);
+        music.setVolume(Constants.GAME_MUSIC_VOLUME);
+
+        music.play();
         setScreen(screenManager);
     }
 }
