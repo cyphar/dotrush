@@ -34,9 +34,11 @@ public class Constants {
     public static float LOGO_IMAGE_HEIGHT = 550;
 
     public static float LOGO_OFFSET_X = 0;
-    public static float LOGO_OFFSET_Y = SCREEN_WIDTH / 8;
-    public static float LOGO_WIDTH = LOGO_IMAGE_WIDTH * 0.25f;
-    public static float LOGO_HEIGHT = LOGO_IMAGE_HEIGHT * 0.25f;
+    public static float LOGO_OFFSET_Y = SCREEN_WIDTH / 6;
+
+    public static float LOGO_RATIO = (SCREEN_WIDTH / LOGO_IMAGE_WIDTH) * 0.55f;
+    public static float LOGO_WIDTH = LOGO_IMAGE_WIDTH * LOGO_RATIO;
+    public static float LOGO_HEIGHT = LOGO_IMAGE_HEIGHT * LOGO_RATIO;
 
     public static String MENU_TEXT = "You are the white dot.\nEat the smaller dots.\nAvoid the larger dots.\nTap to begin.";
     public static float MENU_TEXT_SCALE = 0.65f;
