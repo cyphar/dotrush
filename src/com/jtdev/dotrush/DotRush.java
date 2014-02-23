@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 import com.jtdev.dotrush.managers.ScreenManager;
 import com.jtdev.dotrush.screens.SplashScreen;
+import com.jtdev.dotrush.screens.StartScreen;
 import com.jtdev.dotrush.utils.Logger;
 
 public class DotRush extends Game {
@@ -35,4 +36,11 @@ public class DotRush extends Game {
 
         setScreen(screenManager);
     }
+
+    @Override
+    public void resume() {
+        music.stop();
+        screenManager.setScreen(new SplashScreen(screenManager));
+    }
+
 }
