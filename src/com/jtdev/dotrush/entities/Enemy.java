@@ -1,9 +1,7 @@
 package com.jtdev.dotrush.entities;
 
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 import com.jtdev.dotrush.Constants;
 import com.jtdev.dotrush.utils.Logger;
@@ -102,8 +100,8 @@ public class Enemy implements Entity {
         Tuple<Float, Float> opos = other.getPos();
 
         float ox = opos.x,
-                oy = opos.y,
-                oradius = other.getRadius();
+              oy = opos.y,
+              oradius = other.getRadius();
 
         return Math.pow(ox - x, 2) + Math.pow(oy - y, 2) <= Math.pow(oradius + radius, 2);
     }

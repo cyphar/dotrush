@@ -32,15 +32,13 @@ public class GameManager {
     private int score;
     private boolean started;
 
-    public GameManager(ScreenManager screenManager, Camera camera) {
+    public GameManager(ScreenManager screenManager) {
         player = new Player();
         enemyList = new ArrayList<Enemy>();
 
-        this.camera = camera;
+        camera = screenManager.getMain().camera;
         this.screenManager = screenManager;
-
-        inputManager = new InputManager();
-        Gdx.input.setInputProcessor(inputManager);
+        inputManager = screenManager.getMain().inputManager;
 
         logger = new Logger(this);
 

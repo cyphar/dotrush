@@ -14,6 +14,9 @@ public class Player implements Entity {
     private Color colour;
 
     public Player() {
+        x = Constants.SCREEN_WIDTH / 2;
+        y = Constants.SCREEN_HEIGHT / 2;
+
         radius = Constants.PLAYER_MIN_RADIUS;
         colour = Color.WHITE;
     }

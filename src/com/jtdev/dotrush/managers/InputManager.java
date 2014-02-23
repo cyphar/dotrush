@@ -2,15 +2,20 @@ package com.jtdev.dotrush.managers;
 
 import com.badlogic.gdx.InputProcessor;
 import com.jtdev.dotrush.Constants;
+import com.jtdev.dotrush.utils.Tuple;
 
 public class InputManager implements InputProcessor {
+    private int clickx, clicky;
+
     public int pointerx, pointery;
-    public boolean active;
+    public boolean active, inverted;
 
     public InputManager() {
-        pointerx = 0;
-        pointery = 0;
+        pointerx = pointery = 0;
+        clickx = clicky = -1;
+
         active = false;
+        inverted = true;
     }
 
     @Override
@@ -28,10 +33,21 @@ public class InputManager implements InputProcessor {
         return false;
     }
 
+    public Tuple<Integer, Integer> getTap() {
+        if(clickx < 0 || clicky < 0)
+            return null;
+
+        Tuple<Integer, Integer> pos = new Tuple<Integer, Integer>(clickx, clicky);
+        return pos;
+    }
+
     @Override
     public boolean touchDown(int x, int y, int pointer, int button) {
-        pointerx = x - Constants.SCREEN_WIDTH / 2;
-        pointery = -(y - Constants.SCREEN_HEIGHT / 2);
+        clickx = pointerx = x;
+        clicky = pointery = y;
+
+        if(inverted)
+            clicky = pointery = Constants.SCREEN_HEIGHT - y;
 
         active = true;
         return false;
@@ -39,24 +55,39 @@ public class InputManager implements InputProcessor {
 
     @Override
     public boolean touchUp(int x, int y, int pointer, int button) {
-        pointerx = x - Constants.SCREEN_WIDTH / 2;
-        pointery = -(y - Constants.SCREEN_HEIGHT / 2);
+        pointerx = x;
+        pointery = y;
 
+        if(inverted)
+            pointery = Constants.SCREEN_HEIGHT - y;
+
+        clickx = clicky = -1;
         active = false;
         return false;
     }
 
     @Override
     public boolean touchDragged(int x, int y, int pointer) {
-        pointerx = x - Constants.SCREEN_WIDTH / 2;
-        pointery = -(y - Constants.SCREEN_HEIGHT / 2);
+        pointerx = x;
+        pointery = y;
+
+        if(inverted)
+            pointery = Constants.SCREEN_HEIGHT - y;
+
+        clickx = clicky = -1;
+        active = true;
         return false;
     }
 
     @Override
     public boolean mouseMoved(int x, int y) {
-        pointerx = x - Constants.SCREEN_WIDTH / 2;
-        pointery = -(y - Constants.SCREEN_HEIGHT / 2);
+        pointerx = x;
+        pointery = y;
+
+        if(inverted)
+            pointery = Constants.SCREEN_HEIGHT - y;
+
+        clickx = clicky = -1;
         return false;
     }
 

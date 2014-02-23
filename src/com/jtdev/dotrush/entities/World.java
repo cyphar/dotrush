@@ -18,8 +18,7 @@ public class World {
     private int score;
 
     public World(ScreenManager screenManager) {
-        Camera camera = new OrthographicCamera(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
-        gameManager = new GameManager(screenManager, camera);
+        gameManager = new GameManager(screenManager);
 
         logger = new Logger(this);
         this.screenManager = screenManager;

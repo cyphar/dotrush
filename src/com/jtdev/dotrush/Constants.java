@@ -55,6 +55,45 @@ public class Constants {
     public static float MENU_ENEMY_DMAX_RADIUS = 75; /* 35 more than player */
     public static int MENU_ENEMY_NUMBER = 60;
 
+    /* buttons */
+    public static String BUTTON_IMAGE_PATH = "images/buttons.png";
+    public static int BUTTON_WIDTH = 48;
+    public static int BUTTON_HEIGHT = 48;
+
+    public static int BUTTON_PLAY_IMGX = 0;
+    public static int BUTTON_PLAY_IMGY = 0;
+    public static int BUTTON_MENU_IMGX = 0;
+    public static int BUTTON_MENU_IMGY = 48;
+    public static int BUTTON_MUTE_IMGX = 48;
+    public static int BUTTON_MUTE_IMGY = 0;
+    public static int BUTTON_UNMUTE_IMGX = 48;
+    public static int BUTTON_UNMUTE_IMGY = 48;
+
+    public static float BUTTON_MUSIC_SCALE = 1.2f;
+    public static float BUTTON_MUSIC_OFF_X = -5;
+    public static float BUTTON_MUSIC_OFF_Y = -5;
+    public static float BUTTON_MUSIC_X = SCREEN_WIDTH - (BUTTON_WIDTH * BUTTON_MUSIC_SCALE) + BUTTON_MUSIC_OFF_X;
+    public static float BUTTON_MUSIC_Y = SCREEN_HEIGHT - (BUTTON_HEIGHT * BUTTON_MUSIC_SCALE) + BUTTON_MUSIC_OFF_Y;
+
+    /* end screen */
+    public static String END_TEXT = "You got dotrush'd!\nYour score: %d";
+    public static float END_TEXT_SCALE = 1.2f;
+    public static int END_TEXT_WIDTH = SCREEN_WIDTH;
+    public static float END_TEXT_OFFSET_X = 0;
+    public static float END_TEXT_OFFSET_Y = SCREEN_WIDTH / 6;
+
+    public static float END_BUTTON_PLAY_SCALE = 1.5f;
+    public static float END_BUTTON_PLAY_OFF_X = SCREEN_WIDTH / 128;
+    public static float END_BUTTON_PLAY_OFF_Y = -SCREEN_HEIGHT / 12;
+    public static float END_BUTTON_PLAY_X = ((SCREEN_WIDTH + (BUTTON_WIDTH * END_BUTTON_PLAY_SCALE)) / 2) + END_BUTTON_PLAY_OFF_X;
+    public static float END_BUTTON_PLAY_Y = ((SCREEN_HEIGHT - (BUTTON_HEIGHT * END_BUTTON_PLAY_SCALE)) / 2) + END_BUTTON_PLAY_OFF_Y;
+
+    public static float END_BUTTON_MENU_SCALE = 1.5f;
+    public static float END_BUTTON_MENU_OFF_X = -SCREEN_WIDTH / 128;
+    public static float END_BUTTON_MENU_OFF_Y = -SCREEN_HEIGHT / 12;
+    public static float END_BUTTON_MENU_X = ((SCREEN_WIDTH - (BUTTON_WIDTH * END_BUTTON_MENU_SCALE)) / 2) + END_BUTTON_MENU_OFF_X;
+    public static float END_BUTTON_MENU_Y = ((SCREEN_HEIGHT - (BUTTON_HEIGHT * END_BUTTON_MENU_SCALE)) / 2) + END_BUTTON_MENU_OFF_Y;
+
     /* enemies */
     public static int ENEMY_NUMBER = 150;
     public static float ENEMY_MIN_VELOCITY = 80;

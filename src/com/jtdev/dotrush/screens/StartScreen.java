@@ -18,6 +18,7 @@ import com.jtdev.dotrush.Constants;
 import com.jtdev.dotrush.entities.Enemy;
 import com.jtdev.dotrush.entities.Player;
 import com.jtdev.dotrush.managers.ScreenManager;
+import com.jtdev.dotrush.utils.Button;
 import com.jtdev.dotrush.utils.Logger;
 import com.jtdev.dotrush.utils.Tuple;
 
@@ -38,6 +39,8 @@ public class StartScreen implements Screen {
     private ShapeRenderer shapeRenderer;
     private Camera camera;
 
+    private Button music;
+
     public StartScreen(ScreenManager screenManager) {
         Texture logoTexture = new Texture(Gdx.files.internal(Constants.LOGO_IMAGE_PATH));
         logo = new TextureRegion(logoTexture, 0, 0, (int) Constants.LOGO_IMAGE_WIDTH, (int) Constants.LOGO_IMAGE_HEIGHT);
@@ -50,7 +53,7 @@ public class StartScreen implements Screen {
         texty = Constants.MENU_TEXT_OFFSET_Y + Constants.SCREEN_HEIGHT / 2;
         textx = Constants.MENU_TEXT_OFFSET_X;
 
-        camera = new OrthographicCamera(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+        camera = screenManager.getMain().camera;
         shapeRenderer = new ShapeRenderer();
 
         pseudoPlayer = new Player();
@@ -65,15 +68,32 @@ public class StartScreen implements Screen {
 
         if(screenManager.getMain().playmusic)
             screenManager.getMain().music.play();
+
+        TextureRegion musicImage = screenManager.getMain().playmusic ? screenManager.getMain().muteImage : screenManager.getMain().unmuteImage;
+        music = new Button(Constants.BUTTON_MUSIC_X, Constants.BUTTON_MUSIC_Y, Constants.BUTTON_MUSIC_SCALE, musicImage);
     }
 
     @Override
     public void render(float delta) {
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
-        if(Gdx.input.justTouched()) {
+        boolean musicTouched = music.justPressed(screenManager.getMain().inputManager);
+
+        if(Gdx.input.justTouched() && !musicTouched) {
             logger.log("switch from StartScreen to GameScreen");
             screenManager.setScreen(new GameScreen(screenManager));
+        }
+
+        if(musicTouched) {
+            if(screenManager.getMain().music.isPlaying()) {
+                screenManager.getMain().music.stop();
+                music.setImage(screenManager.getMain().unmuteImage);
+            } else {
+                screenManager.getMain().music.play();
+                music.setImage(screenManager.getMain().muteImage);
+            }
+
+            screenManager.getMain().playmusic = screenManager.getMain().music.isPlaying();
         }
 
         for(int i = 0; i < pseudoEnemyList.size(); i++) {
@@ -114,6 +134,7 @@ public class StartScreen implements Screen {
         font.drawMultiLine(spriteBatch, Constants.MENU_CREDITS, Constants.MENU_CREDITS_X, Constants.MENU_CREDITS_Y);
 
         spriteBatch.draw(logo, logox, logoy, Constants.LOGO_WIDTH, Constants.LOGO_HEIGHT);
+        music.draw(spriteBatch);
         spriteBatch.end();
     }
 
