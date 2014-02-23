@@ -16,7 +16,7 @@ public class Constants {
 
     /* score */
     public static String SCORE_TEXT = "Score: ";
-    public static float SCORE_SCALE = 0.5f;
+    public static float SCORE_SCALE = 0.65f;
     public static int SCORE_Y = SCREEN_HEIGHT - 10;
     public static int SCORE_X = 10;
 
