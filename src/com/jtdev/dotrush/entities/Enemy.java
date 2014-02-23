@@ -32,23 +32,23 @@ public class Enemy implements Entity {
         switch(spawn) {
             default:
             case 0: /* top */
-                y = Constants.SCREEN_HEIGHT + (int)radius;
-                x = Rand.getRange(-Constants.SCREEN_WIDTH, Constants.SCREEN_WIDTH);
+                y = Constants.SCREEN_HEIGHT + (int) radius;
+                x = Rand.getRange(-Constants.ENEMY_POS_PADDING, Constants.SCREEN_WIDTH + Constants.ENEMY_POS_PADDING);
                 angle = -Rand.getRange(0f, 180f);
                 break;
             case 1: /* bottom */
-                y = -(Constants.SCREEN_HEIGHT + (int)radius);
-                x = Rand.getRange(-Constants.SCREEN_WIDTH, Constants.SCREEN_WIDTH);
+                y = -(int) radius;
+                x = Rand.getRange(-Constants.ENEMY_POS_PADDING, Constants.SCREEN_WIDTH + Constants.ENEMY_POS_PADDING);
                 angle = Rand.getRange(0f, 180f);
                 break;
             case 2: /* left */
-                y = Rand.getRange(-Constants.SCREEN_HEIGHT, Constants.SCREEN_HEIGHT);
-                x = -(Constants.SCREEN_WIDTH + (int)radius);
+                y = Rand.getRange(-Constants.ENEMY_POS_PADDING, Constants.SCREEN_HEIGHT + Constants.ENEMY_POS_PADDING);
+                x = -(int) radius;
                 angle = -Rand.getRange(90f, 270f);
                 break;
             case 3: /* right */
-                y = Rand.getRange(-Constants.SCREEN_HEIGHT, Constants.SCREEN_HEIGHT);
-                x = Constants.SCREEN_WIDTH + (int)radius;
+                y = Rand.getRange(-Constants.ENEMY_POS_PADDING, Constants.SCREEN_HEIGHT + Constants.ENEMY_POS_PADDING);
+                x = Constants.SCREEN_WIDTH + (int) radius;
                 angle = Rand.getRange(90f, 270f);
                 break;
         }
