@@ -62,6 +62,9 @@ public class StartScreen implements Screen {
 
         this.screenManager = screenManager;
         logger = new Logger(this);
+
+        if(screenManager.getMain().playmusic)
+            screenManager.getMain().music.play();
     }
 
     @Override

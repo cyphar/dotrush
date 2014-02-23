@@ -15,6 +15,7 @@ public class DotRush extends Game {
 
     public BitmapFont gamefont;
     public Music music;
+    public boolean playmusic;
 
     @Override
     public void create() {
@@ -30,8 +31,8 @@ public class DotRush extends Game {
         music = Gdx.audio.newMusic(Gdx.files.internal(Constants.GAME_MUSIC_PATH));
         music.setLooping(true);
         music.setVolume(Constants.GAME_MUSIC_VOLUME);
+        playmusic = true;
 
-        music.play();
         setScreen(screenManager);
     }
 }
