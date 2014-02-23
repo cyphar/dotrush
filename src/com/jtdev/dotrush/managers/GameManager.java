@@ -51,7 +51,7 @@ public class GameManager {
         int i;
         for(i = 0; i < Constants.ENEMY_NUMBER; i++) {
             float max = player.getRadius() + Constants.ENEMY_DMAX_RADIUS,
-                    min = player.getRadius() - Constants.ENEMY_DMIN_RADIUS;
+                  min = player.getRadius() - Constants.ENEMY_DMIN_RADIUS;
 
             Enemy enemy = new Enemy(score, min, max);
             enemyList.add(enemy);
@@ -119,7 +119,8 @@ public class GameManager {
 
         spriteBatch.begin();
         font.setColor(1, 1, 1, 1);
-        font.draw(spriteBatch, "Score: " + score, Constants.SCORE_X, Constants.SCORE_Y);
+        font.setScale(Constants.SCORE_SCALE);
+        font.draw(spriteBatch, Constants.SCORE_TEXT + score, Constants.SCORE_X, Constants.SCORE_Y);
         spriteBatch.end();
     }
 

@@ -13,9 +13,10 @@ public class Constants {
 
     /* font */
     public static String GAME_FONT_PATH = "fonts/comfortaa.fnt";
-    public static float GAME_FONT_SCALE = -0.25f;
 
     /* score */
+    public static String SCORE_TEXT = "Score: ";
+    public static float SCORE_SCALE = 0.5f;
     public static int SCORE_Y = SCREEN_HEIGHT - 10;
     public static int SCORE_X = 10;
 
@@ -26,6 +27,31 @@ public class Constants {
     public static float SPLASH_WIDTH = 1820;
     public static float SPLASH_HEIGHT = 1024;
     public static float SPLASH_RATIO = SPLASH_HEIGHT / SPLASH_WIDTH;
+
+    /* start screen */
+    public static String LOGO_IMAGE_PATH = "images/logo.png";
+    public static float LOGO_IMAGE_WIDTH = 2460;
+    public static float LOGO_IMAGE_HEIGHT = 550;
+
+    public static float LOGO_OFFSET_X = 0;
+    public static float LOGO_OFFSET_Y = SCREEN_WIDTH / 8;
+    public static float LOGO_WIDTH = LOGO_IMAGE_WIDTH * 0.25f;
+    public static float LOGO_HEIGHT = LOGO_IMAGE_HEIGHT * 0.25f;
+
+    public static String MENU_TEXT = "You are the white dot.\nEat the smaller dots.\nAvoid the larger dots.\nTap to begin.";
+    public static float MENU_TEXT_SCALE = 0.65f;
+    public static int MENU_TEXT_WIDTH = SCREEN_WIDTH;
+    public static float MENU_TEXT_OFFSET_X = 0;
+    public static float MENU_TEXT_OFFSET_Y = -SCREEN_WIDTH / 12;
+
+    public static String MENU_CREDITS = "Created by Cyphar\nMusic courtesy of radtunez.com";
+    public static float MENU_CREDITS_SCALE = 0.5f;
+    public static float MENU_CREDITS_X = 5;
+    public static float MENU_CREDITS_Y = SCREEN_HEIGHT - 5;
+
+    public static float MENU_ENEMY_DMIN_RADIUS = 105; /* 45 less than player */
+    public static float MENU_ENEMY_DMAX_RADIUS = 75; /* 35 more than player */
+    public static int MENU_ENEMY_NUMBER = 60;
 
     /* enemies */
     public static int ENEMY_NUMBER = 150;
