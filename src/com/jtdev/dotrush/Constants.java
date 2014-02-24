@@ -9,7 +9,7 @@ public class Constants {
 
     /* music */
     public static String GAME_MUSIC_PATH = "audio/soundtrack-loop.ogg";
-    public static float GAME_MUSIC_VOLUME = 0.05f;
+    public static float GAME_MUSIC_VOLUME = 0.25f;
 
     /* font */
     public static String GAME_FONT_PATH = "fonts/comfortaa.fnt";
