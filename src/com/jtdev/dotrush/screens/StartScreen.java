@@ -76,6 +76,7 @@ public class StartScreen implements Screen {
     @Override
     public void render(float delta) {
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+        screenManager.getMain().adManager.setVisibility(false);
 
         boolean musicTouched = music.justPressed(screenManager.getMain().inputManager);
 
@@ -145,7 +146,6 @@ public class StartScreen implements Screen {
 
     @Override
     public void show() {
-
     }
 
     @Override

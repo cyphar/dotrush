@@ -33,6 +33,7 @@ public class SplashScreen implements Screen {
     @Override
     public void render(float delta) {
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+        screenManager.getMain().adManager.setVisibility(false);
 
         float splashOffset = (Constants.SCREEN_HEIGHT - Constants.SPLASH_RATIO * Constants.SCREEN_WIDTH) / 2;
         if(splashOffset < 0)

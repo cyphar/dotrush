@@ -47,6 +47,7 @@ public class EndScreen implements Screen {
     @Override
     public void render(float delta) {
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+        screenManager.getMain().adManager.setVisibility(true);
 
         if(music.justPressed(inputManager)) {
             logger.log("Music just pressed.");
@@ -92,7 +93,6 @@ public class EndScreen implements Screen {
 
     @Override
     public void show() {
-
     }
 
     @Override

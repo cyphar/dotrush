@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.Texture;
 
+import com.jtdev.dotrush.managers.AdManager;
 import com.jtdev.dotrush.managers.InputManager;
 import com.jtdev.dotrush.managers.ScreenManager;
 import com.jtdev.dotrush.screens.SplashScreen;
@@ -26,6 +27,11 @@ public class DotRush extends Game {
     public Camera camera;
 
     public TextureRegion muteImage, unmuteImage, playImage, menuImage;
+    public AdManager adManager;
+
+    public DotRush(AdManager adManager) {
+        this.adManager = adManager;
+    }
 
     @Override
     public void create() {
