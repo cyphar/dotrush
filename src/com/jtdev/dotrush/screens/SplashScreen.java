@@ -22,6 +22,8 @@ public class SplashScreen implements Screen {
     private long startTime;
 
     public SplashScreen(ScreenManager screenManager) {
+        screenManager.getMain().adManager.setVisibility(false);
+
         Texture texture = new Texture(Gdx.files.internal(Constants.SPLASH_IMAGE_PATH));
         image = new TextureRegion(texture, 0, 0, (int) Constants.SPLASH_WIDTH, (int) Constants.SPLASH_HEIGHT);
         spriteBatch = new SpriteBatch();
@@ -33,7 +35,6 @@ public class SplashScreen implements Screen {
     @Override
     public void render(float delta) {
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        screenManager.getMain().adManager.setVisibility(false);
 
         float splashOffset = (Constants.SCREEN_HEIGHT - Constants.SPLASH_RATIO * Constants.SCREEN_WIDTH) / 2;
         if(splashOffset < 0)
@@ -54,6 +55,7 @@ public class SplashScreen implements Screen {
     @Override
     public void show() {
         startTime = TimeUtils.millis();
+        screenManager.getMain().adManager.setVisibility(false);
     }
 
     @Override
@@ -66,6 +68,7 @@ public class SplashScreen implements Screen {
 
     @Override
     public void resume() {
+        screenManager.getMain().adManager.setVisibility(false);
     }
 
     @Override

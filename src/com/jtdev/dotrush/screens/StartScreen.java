@@ -42,6 +42,8 @@ public class StartScreen implements Screen {
     private Button music;
 
     public StartScreen(ScreenManager screenManager) {
+        screenManager.getMain().adManager.setVisibility(false);
+
         Texture logoTexture = new Texture(Gdx.files.internal(Constants.LOGO_IMAGE_PATH));
         logo = new TextureRegion(logoTexture, 0, 0, (int) Constants.LOGO_IMAGE_WIDTH, (int) Constants.LOGO_IMAGE_HEIGHT);
         font = screenManager.getMain().gamefont;
@@ -76,7 +78,6 @@ public class StartScreen implements Screen {
     @Override
     public void render(float delta) {
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        screenManager.getMain().adManager.setVisibility(false);
 
         boolean musicTouched = music.justPressed(screenManager.getMain().inputManager);
 
@@ -146,6 +147,7 @@ public class StartScreen implements Screen {
 
     @Override
     public void show() {
+        screenManager.getMain().adManager.setVisibility(false);
     }
 
     @Override
@@ -160,7 +162,7 @@ public class StartScreen implements Screen {
 
     @Override
     public void resume() {
-
+        screenManager.getMain().adManager.setVisibility(false);
     }
 
     @Override

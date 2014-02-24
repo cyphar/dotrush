@@ -26,6 +26,8 @@ public class EndScreen implements Screen {
     private float texty, textx;
 
     public EndScreen(ScreenManager screenManager, int score) {
+        screenManager.getMain().adManager.setVisibility(true);
+
         this.screenManager = screenManager;
         this.score = score;
         inputManager = screenManager.getMain().inputManager;
@@ -47,7 +49,6 @@ public class EndScreen implements Screen {
     @Override
     public void render(float delta) {
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        screenManager.getMain().adManager.setVisibility(true);
 
         if(music.justPressed(inputManager)) {
             logger.log("Music just pressed.");
@@ -93,6 +94,7 @@ public class EndScreen implements Screen {
 
     @Override
     public void show() {
+        screenManager.getMain().adManager.setVisibility(true);
     }
 
     @Override
@@ -107,7 +109,7 @@ public class EndScreen implements Screen {
 
     @Override
     public void resume() {
-
+        screenManager.getMain().adManager.setVisibility(true);
     }
 
     @Override

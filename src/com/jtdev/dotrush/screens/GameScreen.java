@@ -15,6 +15,8 @@ public class GameScreen implements Screen {
     private World world;
 
     public GameScreen(ScreenManager screenManager) {
+        screenManager.getMain().adManager.setVisibility(false);
+
         world = new World(screenManager);
         logger = new Logger(this);
 
@@ -24,8 +26,6 @@ public class GameScreen implements Screen {
     @Override
     public void render(float delta) {
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        screenManager.getMain().adManager.setVisibility(false);
-
         world.render(delta);
     }
 
@@ -36,6 +36,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
+        screenManager.getMain().adManager.setVisibility(false);
     }
 
     @Override
@@ -50,6 +51,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void resume() {
+        screenManager.getMain().adManager.setVisibility(false);
     }
 
     @Override

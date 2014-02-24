@@ -32,7 +32,7 @@ public class DotRushActivity extends AndroidApplication implements AdManager {
                     logger.log("showing ads");
                     adView.setEnabled(true);
                     adView.setVisibility(View.VISIBLE);
-                    /*adView.loadAd(generateRequest());*/
+                    adView.loadAd(generateRequest());
                     break;
                 case HIDE_ADS:
                     logger.log("hiding ads");
