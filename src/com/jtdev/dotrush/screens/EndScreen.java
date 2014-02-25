@@ -28,6 +28,7 @@ public class EndScreen implements Screen {
     public EndScreen(ScreenManager screenManager, int score) {
         screenManager.getMain().adManager.setVisibility(true);
 
+        logger = new Logger(this);
         this.screenManager = screenManager;
         this.score = score;
         inputManager = screenManager.getMain().inputManager;
@@ -35,15 +36,22 @@ public class EndScreen implements Screen {
         spriteBatch = new SpriteBatch();
 
         TextureRegion musicImage = screenManager.getMain().playmusic ? screenManager.getMain().muteImage : screenManager.getMain().unmuteImage;
-        music = new Button(Constants.BUTTON_MUSIC_X, Constants.BUTTON_MUSIC_Y, Constants.BUTTON_MUSIC_SCALE, musicImage);
-        play = new Button(Constants.END_BUTTON_PLAY_X, Constants.END_BUTTON_PLAY_Y, Constants.END_BUTTON_PLAY_SCALE, screenManager.getMain().playImage);
-        menu = new Button(Constants.END_BUTTON_MENU_X, Constants.END_BUTTON_MENU_Y, Constants.END_BUTTON_MENU_SCALE, screenManager.getMain().menuImage);
+        music = new Button(Constants.BUTTON_MUSIC_X, Constants.BUTTON_MUSIC_Y, musicImage);
+        play = new Button(Constants.END_BUTTON_PLAY_X, Constants.END_BUTTON_PLAY_Y, screenManager.getMain().playImage);
+        menu = new Button(Constants.END_BUTTON_MENU_X, Constants.END_BUTTON_MENU_Y, screenManager.getMain().menuImage);
 
-        texty = Constants.END_TEXT_OFFSET_Y + Constants.SCREEN_HEIGHT / 2;
+        music.setScale(Constants.BUTTON_MUSIC_SCALE_X, Constants.BUTTON_MUSIC_SCALE_Y);
+        play.setScale(Constants.END_BUTTON_PLAY_SCALE_X, Constants.END_BUTTON_PLAY_SCALE_Y);
+        menu.setScale(Constants.END_BUTTON_MENU_SCALE_X, Constants.END_BUTTON_MENU_SCALE_Y);
+
+        logger.log("music: " + Constants.BUTTON_MUSIC_SCALE_X + " x " + Constants.BUTTON_MUSIC_SCALE_Y);
+        logger.log("play: " + Constants.END_BUTTON_PLAY_SCALE_X + " x " + Constants.END_BUTTON_PLAY_SCALE_Y);
+        logger.log("menu: " + Constants.END_BUTTON_MENU_SCALE_X + " x " + Constants.END_BUTTON_MENU_SCALE_Y);
+
+        texty = Constants.END_TEXT_OFFSET_Y + Constants.VIRTUAL_SCREEN_HEIGHT / 2;
         textx = Constants.END_TEXT_OFFSET_X;
 
         font = screenManager.getMain().gamefont;
-        logger = new Logger(this);
     }
 
     @Override

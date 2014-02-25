@@ -7,7 +7,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL10;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -49,10 +48,10 @@ public class StartScreen implements Screen {
         font = screenManager.getMain().gamefont;
         spriteBatch = new SpriteBatch();
 
-        logoy = Constants.LOGO_OFFSET_Y + (Constants.SCREEN_HEIGHT - Constants.LOGO_HEIGHT) / 2;
-        logox = Constants.LOGO_OFFSET_X + (Constants.SCREEN_WIDTH - Constants.LOGO_WIDTH) / 2;
+        logoy = Constants.LOGO_OFFSET_Y + (Constants.VIRTUAL_SCREEN_HEIGHT - Constants.LOGO_HEIGHT) / 2;
+        logox = Constants.LOGO_OFFSET_X + (Constants.VIRTUAL_SCREEN_WIDTH - Constants.LOGO_WIDTH) / 2;
 
-        texty = Constants.MENU_TEXT_OFFSET_Y + Constants.SCREEN_HEIGHT / 2;
+        texty = Constants.MENU_TEXT_OFFSET_Y + Constants.VIRTUAL_SCREEN_HEIGHT / 2;
         textx = Constants.MENU_TEXT_OFFSET_X;
 
         camera = screenManager.getMain().camera;
@@ -72,7 +71,8 @@ public class StartScreen implements Screen {
             screenManager.getMain().music.play();
 
         TextureRegion musicImage = screenManager.getMain().playmusic ? screenManager.getMain().muteImage : screenManager.getMain().unmuteImage;
-        music = new Button(Constants.BUTTON_MUSIC_X, Constants.BUTTON_MUSIC_Y, Constants.BUTTON_MUSIC_SCALE, musicImage);
+        music = new Button(Constants.BUTTON_MUSIC_X, Constants.BUTTON_MUSIC_Y, musicImage);
+        music.setScale(Constants.BUTTON_MUSIC_SCALE_X, Constants.BUTTON_MUSIC_SCALE_Y);
     }
 
     @Override

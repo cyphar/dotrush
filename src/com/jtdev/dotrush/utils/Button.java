@@ -1,6 +1,5 @@
 package com.jtdev.dotrush.utils;
 
-
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -24,6 +23,10 @@ public class Button {
 
     public void setImage(TextureRegion image) {
         sprite.setRegion(image);
+    }
+
+    public void setScale(float x, float y) {
+        sprite.setScale(x, y);
     }
 
     public boolean justPressed(InputManager inputManager) {

@@ -1,6 +1,5 @@
 package com.jtdev.dotrush.entities;
 
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
@@ -14,8 +13,8 @@ public class Player implements Entity {
     private Color colour;
 
     public Player() {
-        x = Constants.SCREEN_WIDTH / 2;
-        y = Constants.SCREEN_HEIGHT / 2;
+        x = Constants.VIRTUAL_SCREEN_WIDTH / 2;
+        y = Constants.VIRTUAL_SCREEN_HEIGHT / 2;
 
         radius = Constants.PLAYER_MIN_RADIUS;
         colour = Color.WHITE;

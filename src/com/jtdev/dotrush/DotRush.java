@@ -37,14 +37,15 @@ public class DotRush extends Game {
     public void create() {
         logger = new Logger(this);
         logger.log("starting game in type: " + Gdx.app.getType());
+        logger.log("game is in screen " + Constants.SCREEN_WIDTH + "x" + Constants.SCREEN_HEIGHT);
 
         gamefont = new BitmapFont(Gdx.files.internal(Constants.GAME_FONT_PATH), false);
 
         inputManager = new InputManager();
         Gdx.input.setInputProcessor(inputManager);
 
-        camera = new OrthographicCamera(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
-        camera.translate(Constants.SCREEN_WIDTH / 2, Constants.SCREEN_HEIGHT / 2, 0);
+        camera = new OrthographicCamera(Constants.VIRTUAL_SCREEN_WIDTH, Constants.VIRTUAL_SCREEN_HEIGHT);
+        camera.translate(Constants.VIRTUAL_SCREEN_WIDTH / 2, Constants.VIRTUAL_SCREEN_HEIGHT / 2, 0);
         camera.update();
 
         screenManager = new ScreenManager(this);

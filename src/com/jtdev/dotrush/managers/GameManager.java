@@ -2,10 +2,8 @@ package com.jtdev.dotrush.managers;
 
 import java.util.*;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
@@ -79,8 +77,8 @@ public class GameManager {
                   y = pos.y;
 
             /* outside of screen -- remove enemy */
-            if(x + enemy.getRadius() < -Constants.ENEMY_POS_PADDING || x - enemy.getRadius() > Constants.SCREEN_WIDTH + Constants.ENEMY_POS_PADDING ||
-               y + enemy.getRadius() < -Constants.ENEMY_POS_PADDING || y - enemy.getRadius() > Constants.SCREEN_HEIGHT + Constants.ENEMY_POS_PADDING) {
+            if(x + enemy.getRadius() < -Constants.ENEMY_POS_PADDING || x - enemy.getRadius() > Constants.VIRTUAL_SCREEN_WIDTH + Constants.ENEMY_POS_PADDING ||
+               y + enemy.getRadius() < -Constants.ENEMY_POS_PADDING || y - enemy.getRadius() > Constants.VIRTUAL_SCREEN_HEIGHT + Constants.ENEMY_POS_PADDING) {
                 enemyList.remove(i--);
             }
 

@@ -36,12 +36,12 @@ public class SplashScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
-        float splashOffset = (Constants.SCREEN_HEIGHT - Constants.SPLASH_RATIO * Constants.SCREEN_WIDTH) / 2;
+        float splashOffset = (Constants.VIRTUAL_SCREEN_HEIGHT - Constants.SPLASH_RATIO * Constants.VIRTUAL_SCREEN_WIDTH) / 2;
         if(splashOffset < 0)
             splashOffset = 0;
 
         spriteBatch.begin();
-        spriteBatch.draw(image, 0, splashOffset, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT - 2 * splashOffset);
+        spriteBatch.draw(image, 0, splashOffset, Constants.VIRTUAL_SCREEN_WIDTH, Constants.VIRTUAL_SCREEN_HEIGHT - 2 * splashOffset);
         spriteBatch.end();
 
         if(TimeUtils.millis() - startTime > Constants.SPLASH_SCREEN_TIME)
