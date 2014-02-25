@@ -9,9 +9,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.Texture;
 
-import com.jtdev.dotrush.managers.AdManager;
-import com.jtdev.dotrush.managers.InputManager;
-import com.jtdev.dotrush.managers.ScreenManager;
+import com.jtdev.dotrush.managers.*;
 import com.jtdev.dotrush.screens.SplashScreen;
 import com.jtdev.dotrush.utils.Logger;
 
@@ -29,38 +27,41 @@ public class DotRush extends Game {
     public TextureRegion muteImage, unmuteImage, playImage, menuImage;
     public AdManager adManager;
 
-    public DotRush(AdManager adManager) {
+    public IScoreManager scoreManager;
+
+    public DotRush(AdManager adManager, IScoreManager scoreManager) {
         this.adManager = adManager;
+        this.scoreManager = scoreManager;
     }
 
     @Override
     public void create() {
         logger = new Logger(this);
         logger.log("starting game in type: " + Gdx.app.getType());
-        logger.log("game is in screen " + Constants.SCREEN_WIDTH + "x" + Constants.SCREEN_HEIGHT);
+        logger.log("game is in screen " + GDXConstants.SCREEN_WIDTH + "x" + GDXConstants.SCREEN_HEIGHT);
 
-        gamefont = new BitmapFont(Gdx.files.internal(Constants.GAME_FONT_PATH), false);
+        gamefont = new BitmapFont(Gdx.files.internal(GDXConstants.GAME_FONT_PATH), false);
 
         inputManager = new InputManager();
         Gdx.input.setInputProcessor(inputManager);
 
-        camera = new OrthographicCamera(Constants.VIRTUAL_SCREEN_WIDTH, Constants.VIRTUAL_SCREEN_HEIGHT);
-        camera.translate(Constants.VIRTUAL_SCREEN_WIDTH / 2, Constants.VIRTUAL_SCREEN_HEIGHT / 2, 0);
+        camera = new OrthographicCamera(GDXConstants.VIRTUAL_SCREEN_WIDTH, GDXConstants.VIRTUAL_SCREEN_HEIGHT);
+        camera.translate(GDXConstants.VIRTUAL_SCREEN_WIDTH / 2, GDXConstants.VIRTUAL_SCREEN_HEIGHT / 2, 0);
         camera.update();
 
         screenManager = new ScreenManager(this);
         screenManager.setScreen(new SplashScreen(screenManager));
 
-        Texture buttonMap = new Texture(Gdx.files.internal(Constants.BUTTON_IMAGE_PATH));
-        playImage   = new TextureRegion(buttonMap, Constants.BUTTON_PLAY_IMGX, Constants.BUTTON_PLAY_IMGY, Constants.BUTTON_WIDTH, Constants.BUTTON_HEIGHT);
-        menuImage   = new TextureRegion(buttonMap, Constants.BUTTON_MENU_IMGX, Constants.BUTTON_MENU_IMGY, Constants.BUTTON_WIDTH, Constants.BUTTON_HEIGHT);
-        muteImage   = new TextureRegion(buttonMap, Constants.BUTTON_MUTE_IMGX, Constants.BUTTON_MUTE_IMGY, Constants.BUTTON_WIDTH, Constants.BUTTON_HEIGHT);
-        unmuteImage = new TextureRegion(buttonMap, Constants.BUTTON_UNMUTE_IMGX, Constants.BUTTON_UNMUTE_IMGY, Constants.BUTTON_WIDTH, Constants.BUTTON_HEIGHT);
+        Texture buttonMap = new Texture(Gdx.files.internal(GDXConstants.BUTTON_IMAGE_PATH));
+        playImage   = new TextureRegion(buttonMap, GDXConstants.BUTTON_PLAY_IMGX, GDXConstants.BUTTON_PLAY_IMGY, GDXConstants.BUTTON_WIDTH, GDXConstants.BUTTON_HEIGHT);
+        menuImage   = new TextureRegion(buttonMap, GDXConstants.BUTTON_MENU_IMGX, GDXConstants.BUTTON_MENU_IMGY, GDXConstants.BUTTON_WIDTH, GDXConstants.BUTTON_HEIGHT);
+        muteImage   = new TextureRegion(buttonMap, GDXConstants.BUTTON_MUTE_IMGX, GDXConstants.BUTTON_MUTE_IMGY, GDXConstants.BUTTON_WIDTH, GDXConstants.BUTTON_HEIGHT);
+        unmuteImage = new TextureRegion(buttonMap, GDXConstants.BUTTON_UNMUTE_IMGX, GDXConstants.BUTTON_UNMUTE_IMGY, GDXConstants.BUTTON_WIDTH, GDXConstants.BUTTON_HEIGHT);
 
         /* music is courtesy of http://radtunez.com/ */
-        music = Gdx.audio.newMusic(Gdx.files.internal(Constants.GAME_MUSIC_PATH));
+        music = Gdx.audio.newMusic(Gdx.files.internal(GDXConstants.GAME_MUSIC_PATH));
         music.setLooping(true);
-        music.setVolume(Constants.GAME_MUSIC_VOLUME);
+        music.setVolume(GDXConstants.GAME_MUSIC_VOLUME);
         playmusic = true;
 
         setScreen(screenManager);

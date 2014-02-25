@@ -12,11 +12,11 @@ public class Logger {
 
     public void log(String message) {
         if(Constants.DEBUG_LOG)
-            Gdx.app.log("[DEBUG] " + name, message);
+            System.out.println("[DEBUG] " + name + ": " + message);
     }
 
     public void warn(String message) {
         if(Constants.DEBUG_LOG)
-            Gdx.app.log("[WARN] " + name, message);
+            System.out.println("[WARN] " + name + ": " + message);
     }
 }

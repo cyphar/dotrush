@@ -1,9 +1,5 @@
 package com.jtdev.dotrush.entities;
 
-import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-
-import com.jtdev.dotrush.Constants;
 import com.jtdev.dotrush.managers.ScreenManager;
 import com.jtdev.dotrush.managers.GameManager;
 import com.jtdev.dotrush.screens.EndScreen;

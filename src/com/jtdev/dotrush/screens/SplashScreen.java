@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.TimeUtils;
 
-import com.jtdev.dotrush.Constants;
+import com.jtdev.dotrush.GDXConstants;
 import com.jtdev.dotrush.managers.ScreenManager;
 import com.jtdev.dotrush.utils.Logger;
 
@@ -24,8 +24,8 @@ public class SplashScreen implements Screen {
     public SplashScreen(ScreenManager screenManager) {
         screenManager.getMain().adManager.setVisibility(false);
 
-        Texture texture = new Texture(Gdx.files.internal(Constants.SPLASH_IMAGE_PATH));
-        image = new TextureRegion(texture, 0, 0, (int) Constants.SPLASH_WIDTH, (int) Constants.SPLASH_HEIGHT);
+        Texture texture = new Texture(Gdx.files.internal(GDXConstants.SPLASH_IMAGE_PATH));
+        image = new TextureRegion(texture, 0, 0, (int) GDXConstants.SPLASH_WIDTH, (int) GDXConstants.SPLASH_HEIGHT);
         spriteBatch = new SpriteBatch();
 
         logger = new Logger(this);
@@ -36,15 +36,15 @@ public class SplashScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
-        float splashOffset = (Constants.VIRTUAL_SCREEN_HEIGHT - Constants.SPLASH_RATIO * Constants.VIRTUAL_SCREEN_WIDTH) / 2;
+        float splashOffset = (GDXConstants.VIRTUAL_SCREEN_HEIGHT - GDXConstants.SPLASH_RATIO * GDXConstants.VIRTUAL_SCREEN_WIDTH) / 2;
         if(splashOffset < 0)
             splashOffset = 0;
 
         spriteBatch.begin();
-        spriteBatch.draw(image, 0, splashOffset, Constants.VIRTUAL_SCREEN_WIDTH, Constants.VIRTUAL_SCREEN_HEIGHT - 2 * splashOffset);
+        spriteBatch.draw(image, 0, splashOffset, GDXConstants.VIRTUAL_SCREEN_WIDTH, GDXConstants.VIRTUAL_SCREEN_HEIGHT - 2 * splashOffset);
         spriteBatch.end();
 
-        if(TimeUtils.millis() - startTime > Constants.SPLASH_SCREEN_TIME)
+        if(TimeUtils.millis() - startTime > GDXConstants.SPLASH_SCREEN_TIME)
             screenManager.setScreen(new StartScreen(screenManager));
     }
 

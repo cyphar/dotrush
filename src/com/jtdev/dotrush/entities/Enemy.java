@@ -3,7 +3,7 @@ package com.jtdev.dotrush.entities;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-import com.jtdev.dotrush.Constants;
+import com.jtdev.dotrush.GDXConstants;
 import com.jtdev.dotrush.utils.Logger;
 import com.jtdev.dotrush.utils.Tuple;
 import com.jtdev.dotrush.utils.Rand;
@@ -19,11 +19,11 @@ public class Enemy implements Entity {
     public Enemy(int score, float min, float max) {
         logger = new Logger(this);
         radius = Rand.getRange(min, max);
-        velocity = Rand.getRange(Constants.ENEMY_MIN_VELOCITY, Constants.ENEMY_MAX_VELOCITY);
+        velocity = Rand.getRange(GDXConstants.ENEMY_MIN_VELOCITY, GDXConstants.ENEMY_MAX_VELOCITY);
         colour = new Color(Rand.getRange(0.2f, 0.9f), Rand.getRange(0.2f, 0.9f), Rand.getRange(0.2f, 0.9f), 1f);
 
-        if(radius < Constants.ENEMY_MIN_RADIUS)
-            radius = Constants.ENEMY_MIN_RADIUS;
+        if(radius < GDXConstants.ENEMY_MIN_RADIUS)
+            radius = GDXConstants.ENEMY_MIN_RADIUS;
 
         /* calculate position outside of screen for enemy to start */
         int spawn = Rand.getRange(0, 3);
@@ -32,23 +32,23 @@ public class Enemy implements Entity {
         switch(spawn) {
             default:
             case 0: /* top */
-                y = Constants.VIRTUAL_SCREEN_HEIGHT + (int) radius;
-                x = Rand.getRange(-Constants.ENEMY_POS_PADDING, Constants.VIRTUAL_SCREEN_WIDTH + Constants.ENEMY_POS_PADDING);
+                y = GDXConstants.VIRTUAL_SCREEN_HEIGHT + (int) radius;
+                x = Rand.getRange(-GDXConstants.ENEMY_POS_PADDING, GDXConstants.VIRTUAL_SCREEN_WIDTH + GDXConstants.ENEMY_POS_PADDING);
                 angle = -Rand.getRange(0f, 180f);
                 break;
             case 1: /* bottom */
                 y = -(int) radius;
-                x = Rand.getRange(-Constants.ENEMY_POS_PADDING, Constants.VIRTUAL_SCREEN_WIDTH + Constants.ENEMY_POS_PADDING);
+                x = Rand.getRange(-GDXConstants.ENEMY_POS_PADDING, GDXConstants.VIRTUAL_SCREEN_WIDTH + GDXConstants.ENEMY_POS_PADDING);
                 angle = Rand.getRange(0f, 180f);
                 break;
             case 2: /* left */
-                y = Rand.getRange(-Constants.ENEMY_POS_PADDING, Constants.VIRTUAL_SCREEN_HEIGHT + Constants.ENEMY_POS_PADDING);
+                y = Rand.getRange(-GDXConstants.ENEMY_POS_PADDING, GDXConstants.VIRTUAL_SCREEN_HEIGHT + GDXConstants.ENEMY_POS_PADDING);
                 x = -(int) radius;
                 angle = -Rand.getRange(90f, 270f);
                 break;
             case 3: /* right */
-                y = Rand.getRange(-Constants.ENEMY_POS_PADDING, Constants.VIRTUAL_SCREEN_HEIGHT + Constants.ENEMY_POS_PADDING);
-                x = Constants.VIRTUAL_SCREEN_WIDTH + (int) radius;
+                y = Rand.getRange(-GDXConstants.ENEMY_POS_PADDING, GDXConstants.VIRTUAL_SCREEN_HEIGHT + GDXConstants.ENEMY_POS_PADDING);
+                x = GDXConstants.VIRTUAL_SCREEN_WIDTH + (int) radius;
                 angle = Rand.getRange(90f, 270f);
                 break;
         }

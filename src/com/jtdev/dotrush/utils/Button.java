@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-import com.jtdev.dotrush.Constants;
 import com.jtdev.dotrush.managers.InputManager;
 
 public class Button {

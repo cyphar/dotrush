@@ -13,7 +13,12 @@ import com.google.android.gms.ads.mediation.admob.AdMobExtras;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
+
 import com.jtdev.dotrush.managers.AdManager;
+import com.jtdev.dotrush.db.ScoreDatabaseManager;
+import com.jtdev.dotrush.managers.IScoreManager;
+import com.jtdev.dotrush.managers.PseudoScoreManager;
+import com.jtdev.dotrush.managers.ScoreManager;
 import com.jtdev.dotrush.utils.Logger;
 
 
@@ -57,8 +62,23 @@ public class DotRushActivity extends AndroidApplication implements AdManager {
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
 
+        logger = new Logger(this);
+        IScoreManager scoreManager = null;
+
+        try {
+            scoreManager = new ScoreManager(new ScoreDatabaseManager(this.getBaseContext()));
+        } catch (Exception e) {
+            logger.warn("could not connect to score database");
+            logger.warn("db err: " + e.getMessage());
+
+            for(StackTraceElement ste: e.getStackTrace())
+                logger.warn("ste: " + ste.toString());
+
+            scoreManager = new PseudoScoreManager();
+        }
+
         RelativeLayout layout = new RelativeLayout(this);
-        View gameView = initializeForView(new DotRush(this), cfg);
+        View gameView = initializeForView(new DotRush(this, scoreManager), cfg);
         layout.addView(gameView);
 
         adView = new AdView(this);
@@ -73,7 +93,6 @@ public class DotRushActivity extends AndroidApplication implements AdManager {
         layout.addView(adView, adParams);
 
         setContentView(layout);
-        logger = new Logger(this);
     }
 
     @Override

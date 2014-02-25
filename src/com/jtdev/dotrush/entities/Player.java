@@ -3,7 +3,7 @@ package com.jtdev.dotrush.entities;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-import com.jtdev.dotrush.Constants;
+import com.jtdev.dotrush.GDXConstants;
 import com.jtdev.dotrush.utils.Tuple;
 
 public class Player implements Entity {
@@ -13,10 +13,10 @@ public class Player implements Entity {
     private Color colour;
 
     public Player() {
-        x = Constants.VIRTUAL_SCREEN_WIDTH / 2;
-        y = Constants.VIRTUAL_SCREEN_HEIGHT / 2;
+        x = GDXConstants.VIRTUAL_SCREEN_WIDTH / 2;
+        y = GDXConstants.VIRTUAL_SCREEN_HEIGHT / 2;
 
-        radius = Constants.PLAYER_MIN_RADIUS;
+        radius = GDXConstants.PLAYER_MIN_RADIUS;
         colour = Color.WHITE;
     }
 
@@ -32,7 +32,7 @@ public class Player implements Entity {
     }
 
     public void updRadius(int score) {
-        radius = Constants.PLAYER_MIN_RADIUS + score;
+        radius = GDXConstants.PLAYER_MIN_RADIUS + score;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class Player implements Entity {
 
     @Override
     public void setPos(float x, float y) {
-        float touchRadius = radius + Constants.PLAYER_TOUCH_RADIUS;
+        float touchRadius = radius + GDXConstants.PLAYER_TOUCH_RADIUS;
 
         if(Math.sqrt(Math.pow(this.x - x, 2) + Math.pow(this.y - y, 2)) <= touchRadius) {
             this.x = x;
@@ -56,14 +56,14 @@ public class Player implements Entity {
 
         if(this.x - radius < 0)
             this.x = radius;
-        else if(this.x + radius > Constants.VIRTUAL_SCREEN_WIDTH)
-            this.x = Constants.VIRTUAL_SCREEN_WIDTH - radius;
+        else if(this.x + radius > GDXConstants.VIRTUAL_SCREEN_WIDTH)
+            this.x = GDXConstants.VIRTUAL_SCREEN_WIDTH - radius;
 
 
         if(this.y - radius < 0)
             this.y = radius;
-        else if(this.y + radius > Constants.VIRTUAL_SCREEN_HEIGHT)
-            this.y = Constants.VIRTUAL_SCREEN_HEIGHT - radius;
+        else if(this.y + radius > GDXConstants.VIRTUAL_SCREEN_HEIGHT)
+            this.y = GDXConstants.VIRTUAL_SCREEN_HEIGHT - radius;
     }
 
     @Override

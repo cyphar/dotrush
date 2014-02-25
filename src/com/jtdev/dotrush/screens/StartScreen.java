@@ -13,7 +13,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.jtdev.dotrush.Constants;
+import com.jtdev.dotrush.GDXConstants;
 import com.jtdev.dotrush.entities.Enemy;
 import com.jtdev.dotrush.entities.Player;
 import com.jtdev.dotrush.managers.ScreenManager;
@@ -43,24 +43,24 @@ public class StartScreen implements Screen {
     public StartScreen(ScreenManager screenManager) {
         screenManager.getMain().adManager.setVisibility(false);
 
-        Texture logoTexture = new Texture(Gdx.files.internal(Constants.LOGO_IMAGE_PATH));
-        logo = new TextureRegion(logoTexture, 0, 0, (int) Constants.LOGO_IMAGE_WIDTH, (int) Constants.LOGO_IMAGE_HEIGHT);
+        Texture logoTexture = new Texture(Gdx.files.internal(GDXConstants.LOGO_IMAGE_PATH));
+        logo = new TextureRegion(logoTexture, 0, 0, (int) GDXConstants.LOGO_IMAGE_WIDTH, (int) GDXConstants.LOGO_IMAGE_HEIGHT);
         font = screenManager.getMain().gamefont;
         spriteBatch = new SpriteBatch();
 
-        logoy = Constants.LOGO_OFFSET_Y + (Constants.VIRTUAL_SCREEN_HEIGHT - Constants.LOGO_HEIGHT) / 2;
-        logox = Constants.LOGO_OFFSET_X + (Constants.VIRTUAL_SCREEN_WIDTH - Constants.LOGO_WIDTH) / 2;
+        logoy = GDXConstants.LOGO_OFFSET_Y + (GDXConstants.VIRTUAL_SCREEN_HEIGHT - GDXConstants.LOGO_HEIGHT) / 2;
+        logox = GDXConstants.LOGO_OFFSET_X + (GDXConstants.VIRTUAL_SCREEN_WIDTH - GDXConstants.LOGO_WIDTH) / 2;
 
-        texty = Constants.MENU_TEXT_OFFSET_Y + Constants.VIRTUAL_SCREEN_HEIGHT / 2;
-        textx = Constants.MENU_TEXT_OFFSET_X;
+        texty = GDXConstants.MENU_TEXT_OFFSET_Y + GDXConstants.VIRTUAL_SCREEN_HEIGHT / 2;
+        textx = GDXConstants.MENU_TEXT_OFFSET_X;
 
         camera = screenManager.getMain().camera;
         shapeRenderer = new ShapeRenderer();
 
         pseudoPlayer = new Player();
         pseudoEnemyList = new ArrayList<Enemy>();
-        for(int i = 0; i < Constants.MENU_ENEMY_NUMBER; i++) {
-            Enemy enemy = new Enemy(0, Constants.PLAYER_MIN_RADIUS + Constants.MENU_ENEMY_DMIN_RADIUS, Constants.PLAYER_MIN_RADIUS + Constants.MENU_ENEMY_DMAX_RADIUS);
+        for(int i = 0; i < GDXConstants.MENU_ENEMY_NUMBER; i++) {
+            Enemy enemy = new Enemy(0, GDXConstants.PLAYER_MIN_RADIUS + GDXConstants.MENU_ENEMY_DMIN_RADIUS, GDXConstants.PLAYER_MIN_RADIUS + GDXConstants.MENU_ENEMY_DMAX_RADIUS);
             pseudoEnemyList.add(enemy);
         }
 
@@ -71,8 +71,8 @@ public class StartScreen implements Screen {
             screenManager.getMain().music.play();
 
         TextureRegion musicImage = screenManager.getMain().playmusic ? screenManager.getMain().muteImage : screenManager.getMain().unmuteImage;
-        music = new Button(Constants.BUTTON_MUSIC_X, Constants.BUTTON_MUSIC_Y, musicImage);
-        music.setScale(Constants.BUTTON_MUSIC_SCALE_X, Constants.BUTTON_MUSIC_SCALE_Y);
+        music = new Button(GDXConstants.BUTTON_MUSIC_X, GDXConstants.BUTTON_MUSIC_Y, musicImage);
+        music.setScale(GDXConstants.BUTTON_MUSIC_SCALE_X, GDXConstants.BUTTON_MUSIC_SCALE_Y);
     }
 
     @Override
@@ -114,8 +114,8 @@ public class StartScreen implements Screen {
             }
         }
 
-        while(pseudoEnemyList.size() < Constants.MENU_ENEMY_NUMBER) {
-            Enemy enemy = new Enemy(0, Constants.PLAYER_MIN_RADIUS + Constants.MENU_ENEMY_DMIN_RADIUS, Constants.PLAYER_MIN_RADIUS + Constants.MENU_ENEMY_DMAX_RADIUS);
+        while(pseudoEnemyList.size() < GDXConstants.MENU_ENEMY_NUMBER) {
+            Enemy enemy = new Enemy(0, GDXConstants.PLAYER_MIN_RADIUS + GDXConstants.MENU_ENEMY_DMIN_RADIUS, GDXConstants.PLAYER_MIN_RADIUS + GDXConstants.MENU_ENEMY_DMAX_RADIUS);
             pseudoEnemyList.add(enemy);
         }
 
@@ -129,13 +129,13 @@ public class StartScreen implements Screen {
 
         spriteBatch.begin();
         font.setColor(1, 1, 1, 1);
-        font.setScale(Constants.MENU_TEXT_SCALE);
-        font.drawMultiLine(spriteBatch, Constants.MENU_TEXT, textx, texty, Constants.MENU_TEXT_WIDTH, BitmapFont.HAlignment.CENTER);
+        font.setScale(GDXConstants.MENU_TEXT_SCALE);
+        font.drawMultiLine(spriteBatch, GDXConstants.MENU_TEXT, textx, texty, GDXConstants.MENU_TEXT_WIDTH, BitmapFont.HAlignment.CENTER);
 
-        font.setScale(Constants.MENU_CREDITS_SCALE);
-        font.drawMultiLine(spriteBatch, Constants.MENU_CREDITS, Constants.MENU_CREDITS_X, Constants.MENU_CREDITS_Y);
+        font.setScale(GDXConstants.MENU_CREDITS_SCALE);
+        font.drawMultiLine(spriteBatch, GDXConstants.MENU_CREDITS, GDXConstants.MENU_CREDITS_X, GDXConstants.MENU_CREDITS_Y);
 
-        spriteBatch.draw(logo, logox, logoy, Constants.LOGO_WIDTH, Constants.LOGO_HEIGHT);
+        spriteBatch.draw(logo, logox, logoy, GDXConstants.LOGO_WIDTH, GDXConstants.LOGO_HEIGHT);
         music.draw(spriteBatch);
         spriteBatch.end();
     }

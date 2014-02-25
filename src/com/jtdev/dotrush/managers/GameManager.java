@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-import com.jtdev.dotrush.Constants;
+import com.jtdev.dotrush.GDXConstants;
 import com.jtdev.dotrush.entities.Enemy;
 import com.jtdev.dotrush.entities.Player;
 import com.jtdev.dotrush.utils.Logger;
@@ -45,9 +45,9 @@ public class GameManager {
         font = screenManager.getMain().gamefont;
 
         int i;
-        for(i = 0; i < Constants.ENEMY_NUMBER; i++) {
-            float max = player.getRadius() + Constants.ENEMY_DMAX_RADIUS,
-                  min = player.getRadius() - Constants.ENEMY_DMIN_RADIUS;
+        for(i = 0; i < GDXConstants.ENEMY_NUMBER; i++) {
+            float max = player.getRadius() + GDXConstants.ENEMY_DMAX_RADIUS,
+                  min = player.getRadius() - GDXConstants.ENEMY_DMIN_RADIUS;
 
             Enemy enemy = new Enemy(score, min, max);
             enemyList.add(enemy);
@@ -77,8 +77,8 @@ public class GameManager {
                   y = pos.y;
 
             /* outside of screen -- remove enemy */
-            if(x + enemy.getRadius() < -Constants.ENEMY_POS_PADDING || x - enemy.getRadius() > Constants.VIRTUAL_SCREEN_WIDTH + Constants.ENEMY_POS_PADDING ||
-               y + enemy.getRadius() < -Constants.ENEMY_POS_PADDING || y - enemy.getRadius() > Constants.VIRTUAL_SCREEN_HEIGHT + Constants.ENEMY_POS_PADDING) {
+            if(x + enemy.getRadius() < -GDXConstants.ENEMY_POS_PADDING || x - enemy.getRadius() > GDXConstants.VIRTUAL_SCREEN_WIDTH + GDXConstants.ENEMY_POS_PADDING ||
+               y + enemy.getRadius() < -GDXConstants.ENEMY_POS_PADDING || y - enemy.getRadius() > GDXConstants.VIRTUAL_SCREEN_HEIGHT + GDXConstants.ENEMY_POS_PADDING) {
                 enemyList.remove(i--);
             }
 
@@ -92,9 +92,9 @@ public class GameManager {
             }
         }
 
-        while(enemyList.size() < Constants.ENEMY_NUMBER) {
-            float max = player.getRadius() + Constants.ENEMY_DMAX_RADIUS,
-                    min = player.getRadius() - Constants.ENEMY_DMIN_RADIUS;
+        while(enemyList.size() < GDXConstants.ENEMY_NUMBER) {
+            float max = player.getRadius() + GDXConstants.ENEMY_DMAX_RADIUS,
+                    min = player.getRadius() - GDXConstants.ENEMY_DMIN_RADIUS;
 
             Enemy enemy = new Enemy(score, min, max);
             enemyList.add(enemy);
@@ -115,8 +115,8 @@ public class GameManager {
 
         spriteBatch.begin();
         font.setColor(1, 1, 1, 1);
-        font.setScale(Constants.SCORE_SCALE);
-        font.draw(spriteBatch, Constants.SCORE_TEXT + score, Constants.SCORE_X, Constants.SCORE_Y);
+        font.setScale(GDXConstants.SCORE_SCALE);
+        font.draw(spriteBatch, GDXConstants.SCORE_TEXT + score, GDXConstants.SCORE_X, GDXConstants.SCORE_Y);
         spriteBatch.end();
     }
 

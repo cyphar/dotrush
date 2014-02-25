@@ -7,7 +7,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-import com.jtdev.dotrush.Constants;
+import com.jtdev.dotrush.GDXConstants;
+import com.jtdev.dotrush.managers.IScoreManager;
 import com.jtdev.dotrush.managers.InputManager;
 import com.jtdev.dotrush.managers.ScreenManager;
 import com.jtdev.dotrush.utils.Button;
@@ -22,8 +23,12 @@ public class EndScreen implements Screen {
     private BitmapFont font;
     private int score;
 
+    private boolean ishighscore;
+    private int highscore;
+
     private Button music, play, menu;
     private float texty, textx;
+    private String text;
 
     public EndScreen(ScreenManager screenManager, int score) {
         screenManager.getMain().adManager.setVisibility(true);
@@ -33,23 +38,44 @@ public class EndScreen implements Screen {
         this.score = score;
         inputManager = screenManager.getMain().inputManager;
 
+        IScoreManager scoreManager = screenManager.getMain().scoreManager;
+
+        try {
+            ishighscore = scoreManager.isHighScore(score);
+            highscore = scoreManager.getHighScore();
+            if(ishighscore)
+                highscore = scoreManager.updHighScore(score);
+        } catch (Exception e) {
+            logger.warn("need to use fake highscore: " + e.getMessage());
+            for(StackTraceElement ste: e.getStackTrace())
+                logger.warn("ste: " + ste.toString());
+
+            ishighscore = false;
+            highscore = -1;
+        }
+
+        if(highscore < 0)
+            text = String.format(GDXConstants.END_TEXT_NOHIGHSCORE, score);
+        else
+            text = String.format(GDXConstants.END_TEXT, score, highscore);
+
         spriteBatch = new SpriteBatch();
 
         TextureRegion musicImage = screenManager.getMain().playmusic ? screenManager.getMain().muteImage : screenManager.getMain().unmuteImage;
-        music = new Button(Constants.BUTTON_MUSIC_X, Constants.BUTTON_MUSIC_Y, musicImage);
-        play = new Button(Constants.END_BUTTON_PLAY_X, Constants.END_BUTTON_PLAY_Y, screenManager.getMain().playImage);
-        menu = new Button(Constants.END_BUTTON_MENU_X, Constants.END_BUTTON_MENU_Y, screenManager.getMain().menuImage);
+        music = new Button(GDXConstants.BUTTON_MUSIC_X, GDXConstants.BUTTON_MUSIC_Y, musicImage);
+        play = new Button(GDXConstants.END_BUTTON_PLAY_X, GDXConstants.END_BUTTON_PLAY_Y, screenManager.getMain().playImage);
+        menu = new Button(GDXConstants.END_BUTTON_MENU_X, GDXConstants.END_BUTTON_MENU_Y, screenManager.getMain().menuImage);
 
-        music.setScale(Constants.BUTTON_MUSIC_SCALE_X, Constants.BUTTON_MUSIC_SCALE_Y);
-        play.setScale(Constants.END_BUTTON_PLAY_SCALE_X, Constants.END_BUTTON_PLAY_SCALE_Y);
-        menu.setScale(Constants.END_BUTTON_MENU_SCALE_X, Constants.END_BUTTON_MENU_SCALE_Y);
+        music.setScale(GDXConstants.BUTTON_MUSIC_SCALE_X, GDXConstants.BUTTON_MUSIC_SCALE_Y);
+        play.setScale(GDXConstants.END_BUTTON_PLAY_SCALE_X, GDXConstants.END_BUTTON_PLAY_SCALE_Y);
+        menu.setScale(GDXConstants.END_BUTTON_MENU_SCALE_X, GDXConstants.END_BUTTON_MENU_SCALE_Y);
 
-        logger.log("music: " + Constants.BUTTON_MUSIC_SCALE_X + " x " + Constants.BUTTON_MUSIC_SCALE_Y);
-        logger.log("play: " + Constants.END_BUTTON_PLAY_SCALE_X + " x " + Constants.END_BUTTON_PLAY_SCALE_Y);
-        logger.log("menu: " + Constants.END_BUTTON_MENU_SCALE_X + " x " + Constants.END_BUTTON_MENU_SCALE_Y);
+        logger.log("music: " + GDXConstants.BUTTON_MUSIC_SCALE_X + " x " + GDXConstants.BUTTON_MUSIC_SCALE_Y);
+        logger.log("play: " + GDXConstants.END_BUTTON_PLAY_SCALE_X + " x " + GDXConstants.END_BUTTON_PLAY_SCALE_Y);
+        logger.log("menu: " + GDXConstants.END_BUTTON_MENU_SCALE_X + " x " + GDXConstants.END_BUTTON_MENU_SCALE_Y);
 
-        texty = Constants.END_TEXT_OFFSET_Y + Constants.VIRTUAL_SCREEN_HEIGHT / 2;
-        textx = Constants.END_TEXT_OFFSET_X;
+        texty = GDXConstants.END_TEXT_OFFSET_Y + GDXConstants.VIRTUAL_SCREEN_HEIGHT / 2;
+        textx = GDXConstants.END_TEXT_OFFSET_X;
 
         font = screenManager.getMain().gamefont;
     }
@@ -87,10 +113,9 @@ public class EndScreen implements Screen {
         play.draw(spriteBatch);
         menu.draw(spriteBatch);
 
-        String text = String.format(Constants.END_TEXT, score);
         font.setColor(1, 1, 1, 1);
-        font.setScale(Constants.END_TEXT_SCALE);
-        font.drawMultiLine(spriteBatch, text, textx, texty, Constants.END_TEXT_WIDTH, BitmapFont.HAlignment.CENTER);
+        font.setScale(GDXConstants.END_TEXT_SCALE);
+        font.drawMultiLine(spriteBatch, text, textx, texty, GDXConstants.END_TEXT_WIDTH, BitmapFont.HAlignment.CENTER);
 
         spriteBatch.end();
     }

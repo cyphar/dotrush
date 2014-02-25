@@ -1,7 +1,7 @@
 package com.jtdev.dotrush.managers;
 
 import com.badlogic.gdx.InputProcessor;
-import com.jtdev.dotrush.Constants;
+import com.jtdev.dotrush.GDXConstants;
 import com.jtdev.dotrush.utils.Tuple;
 
 public class InputManager implements InputProcessor {
@@ -47,7 +47,7 @@ public class InputManager implements InputProcessor {
         clicky = pointery = y;
 
         if(inverted)
-            clicky = pointery = Constants.VIRTUAL_SCREEN_HEIGHT - y;
+            clicky = pointery = GDXConstants.VIRTUAL_SCREEN_HEIGHT - y;
 
         active = true;
         return false;
@@ -59,7 +59,7 @@ public class InputManager implements InputProcessor {
         pointery = y;
 
         if(inverted)
-            pointery = Constants.VIRTUAL_SCREEN_HEIGHT - y;
+            pointery = GDXConstants.VIRTUAL_SCREEN_HEIGHT - y;
 
         clickx = clicky = -1;
         active = false;
@@ -72,7 +72,7 @@ public class InputManager implements InputProcessor {
         pointery = y;
 
         if(inverted)
-            pointery = Constants.VIRTUAL_SCREEN_HEIGHT - y;
+            pointery = GDXConstants.VIRTUAL_SCREEN_HEIGHT - y;
 
         clickx = clicky = -1;
         active = true;
@@ -85,7 +85,7 @@ public class InputManager implements InputProcessor {
         pointery = y;
 
         if(inverted)
-            pointery = Constants.VIRTUAL_SCREEN_HEIGHT - y;
+            pointery = GDXConstants.VIRTUAL_SCREEN_HEIGHT - y;
 
         clickx = clicky = -1;
         return false;
