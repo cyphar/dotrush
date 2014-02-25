@@ -53,6 +53,17 @@ public class Player implements Entity {
             this.x = x;
             this.y = y;
         }
+
+        if(this.x - radius < 0)
+            this.x = radius;
+        else if(this.x + radius > Constants.VIRTUAL_SCREEN_WIDTH)
+            this.x = Constants.VIRTUAL_SCREEN_WIDTH - radius;
+
+
+        if(this.y - radius < 0)
+            this.y = radius;
+        else if(this.y + radius > Constants.VIRTUAL_SCREEN_HEIGHT)
+            this.y = Constants.VIRTUAL_SCREEN_HEIGHT - radius;
     }
 
     @Override
