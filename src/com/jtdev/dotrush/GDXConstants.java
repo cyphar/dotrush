@@ -88,6 +88,7 @@ public class GDXConstants {
 
     /* end screen */
     public static String END_TEXT = "You got dotrush'd!\nYour score: %d\nHigh score: %d";
+    public static String END_TEXT_HIGHSCORE = "You got dotrush'd!\nYour new high score: %d";
     public static String END_TEXT_NOHIGHSCORE = "You got dotrush'd!\nYour score: %d";
     public static float END_TEXT_SCALE = (26 * SCREEN_DP) / GAME_FONT_SIZE;
     public static int END_TEXT_WIDTH = VIRTUAL_SCREEN_WIDTH;

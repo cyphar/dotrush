@@ -56,6 +56,8 @@ public class EndScreen implements Screen {
 
         if(highscore < 0)
             text = String.format(GDXConstants.END_TEXT_NOHIGHSCORE, score);
+        else if(ishighscore)
+            text = String.format(GDXConstants.END_TEXT_HIGHSCORE, score);
         else
             text = String.format(GDXConstants.END_TEXT, score, highscore);
 
