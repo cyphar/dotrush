@@ -1,6 +1,10 @@
+/* Copyright (C) JT-Dev 2014
+ * Created, authored and designed by Cyphar.
+ * This project is *not* open source (unfortunately).
+ */
+
 package com.jtdev.dotrush.utils;
 
-import com.badlogic.gdx.Gdx;
 import com.jtdev.dotrush.Constants;
 
 public class Logger {

@@ -1,3 +1,8 @@
+/* Copyright (C) JT-Dev 2014
+ * Created, authored and designed by Cyphar.
+ * This project is *not* open source (unfortunately).
+ */
+
 package com.jtdev.dotrush;
 
 import android.os.Bundle;
@@ -20,7 +25,6 @@ import com.jtdev.dotrush.managers.IScoreManager;
 import com.jtdev.dotrush.managers.PseudoScoreManager;
 import com.jtdev.dotrush.managers.ScoreManager;
 import com.jtdev.dotrush.utils.Logger;
-
 
 public class DotRushActivity extends AndroidApplication implements AdManager {
     private Logger logger;
@@ -82,7 +86,7 @@ public class DotRushActivity extends AndroidApplication implements AdManager {
         layout.addView(gameView);
 
         adView = new AdView(this);
-        adView.setAdUnitId("***");
+        adView.setAdUnitId("a15301e94e5eb65");
         adView.setAdSize(AdSize.SMART_BANNER);
 
         RelativeLayout.LayoutParams adParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
