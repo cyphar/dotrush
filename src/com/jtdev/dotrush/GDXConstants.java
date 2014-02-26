@@ -20,6 +20,13 @@ public class GDXConstants {
     public static String GAME_MUSIC_PATH = "audio/soundtrack-loop.ogg";
     public static float GAME_MUSIC_VOLUME = 0.25f;
 
+    /* sound effects */
+    public static String GROW_SOUND_PATH = "audio/sfx/grow.ogg";
+    public static float GROW_SOUND_VOLUME = 0.25f;
+
+    public static String DEATH_SOUND_PATH = "audio/sfx/death.ogg";
+    public static float DEATH_SOUND_VOLUME = 0.25f;
+
     /* font */
     public static String GAME_FONT_PATH = "fonts/comfortaa.fnt";
     public static float GAME_FONT_SIZE = 48;
@@ -70,14 +77,21 @@ public class GDXConstants {
     public static int BUTTON_WIDTH = 48;
     public static int BUTTON_HEIGHT = 48;
 
-    public static int BUTTON_PLAY_IMGX = 0;
+    public static int BUTTON_PLAY_IMGX = BUTTON_WIDTH;
     public static int BUTTON_PLAY_IMGY = 0;
+
     public static int BUTTON_MENU_IMGX = 0;
-    public static int BUTTON_MENU_IMGY = 48;
-    public static int BUTTON_MUTE_IMGX = 48;
-    public static int BUTTON_MUTE_IMGY = 0;
-    public static int BUTTON_UNMUTE_IMGX = 48;
-    public static int BUTTON_UNMUTE_IMGY = 48;
+    public static int BUTTON_MENU_IMGY = 0;
+
+    public static int BUTTON_MUTE_MUSIC_IMGX = BUTTON_WIDTH * 3;
+    public static int BUTTON_MUTE_MUSIC_IMGY = 0;
+    public static int BUTTON_UNMUTE_MUSIC_IMGX = BUTTON_WIDTH * 2;
+    public static int BUTTON_UNMUTE_MUSIC_IMGY = 0;
+
+    public static int BUTTON_MUTE_SFX_IMGX = BUTTON_WIDTH * 5;
+    public static int BUTTON_MUTE_SFX_IMGY = 0;
+    public static int BUTTON_UNMUTE_SFX_IMGX = BUTTON_WIDTH * 4;
+    public static int BUTTON_UNMUTE_SFX_IMGY = 0;
 
     public static float BUTTON_MUSIC_SCALE_X = (36 * SCREEN_DP) / BUTTON_WIDTH;
     public static float BUTTON_MUSIC_SCALE_Y = (36 * SCREEN_DP) / BUTTON_HEIGHT;
@@ -85,6 +99,13 @@ public class GDXConstants {
     public static float BUTTON_MUSIC_OFF_Y = -5;
     public static float BUTTON_MUSIC_X = VIRTUAL_SCREEN_WIDTH - (BUTTON_WIDTH * BUTTON_MUSIC_SCALE_X) + BUTTON_MUSIC_OFF_X;
     public static float BUTTON_MUSIC_Y = VIRTUAL_SCREEN_HEIGHT - (BUTTON_HEIGHT * BUTTON_MUSIC_SCALE_Y) + BUTTON_MUSIC_OFF_Y;
+
+    public static float BUTTON_SFX_SCALE_X = (36 * SCREEN_DP) / BUTTON_WIDTH;
+    public static float BUTTON_SFX_SCALE_Y = (36 * SCREEN_DP) / BUTTON_HEIGHT;
+    public static float BUTTON_SFX_OFF_X = -(10 + (BUTTON_WIDTH * BUTTON_MUSIC_SCALE_X));
+    public static float BUTTON_SFX_OFF_Y = -5;
+    public static float BUTTON_SFX_X = VIRTUAL_SCREEN_WIDTH - (BUTTON_WIDTH * BUTTON_SFX_SCALE_X) + BUTTON_SFX_OFF_X;
+    public static float BUTTON_SFX_Y = VIRTUAL_SCREEN_HEIGHT - (BUTTON_HEIGHT * BUTTON_SFX_SCALE_Y) + BUTTON_SFX_OFF_Y;
 
     /* end screen */
     public static String END_TEXT = "You got dotrush'd!\nYour score: %d\nHigh score: %d";

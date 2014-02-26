@@ -3,6 +3,7 @@ package com.jtdev.dotrush;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -20,11 +21,18 @@ public class DotRush extends Game {
     public InputManager inputManager;
 
     public BitmapFont gamefont;
-    public Music music;
-    public boolean playmusic;
     public Camera camera;
 
-    public TextureRegion muteImage, unmuteImage, playImage, menuImage;
+    public Music music;
+    public boolean playmusic;
+
+    public Sound growSound, deathSound;
+    public boolean playsfx;
+
+
+    public TextureRegion muteMusicImage, unmuteMusicImage,
+                         muteSfxImage, unmuteSfxImage,
+                         playImage, menuImage;
     public AdManager adManager;
 
     public IScoreManager scoreManager;
@@ -55,14 +63,23 @@ public class DotRush extends Game {
         Texture buttonMap = new Texture(Gdx.files.internal(GDXConstants.BUTTON_IMAGE_PATH));
         playImage   = new TextureRegion(buttonMap, GDXConstants.BUTTON_PLAY_IMGX, GDXConstants.BUTTON_PLAY_IMGY, GDXConstants.BUTTON_WIDTH, GDXConstants.BUTTON_HEIGHT);
         menuImage   = new TextureRegion(buttonMap, GDXConstants.BUTTON_MENU_IMGX, GDXConstants.BUTTON_MENU_IMGY, GDXConstants.BUTTON_WIDTH, GDXConstants.BUTTON_HEIGHT);
-        muteImage   = new TextureRegion(buttonMap, GDXConstants.BUTTON_MUTE_IMGX, GDXConstants.BUTTON_MUTE_IMGY, GDXConstants.BUTTON_WIDTH, GDXConstants.BUTTON_HEIGHT);
-        unmuteImage = new TextureRegion(buttonMap, GDXConstants.BUTTON_UNMUTE_IMGX, GDXConstants.BUTTON_UNMUTE_IMGY, GDXConstants.BUTTON_WIDTH, GDXConstants.BUTTON_HEIGHT);
+
+        muteMusicImage   = new TextureRegion(buttonMap, GDXConstants.BUTTON_MUTE_MUSIC_IMGX, GDXConstants.BUTTON_MUTE_MUSIC_IMGY, GDXConstants.BUTTON_WIDTH, GDXConstants.BUTTON_HEIGHT);
+        unmuteMusicImage = new TextureRegion(buttonMap, GDXConstants.BUTTON_UNMUTE_MUSIC_IMGX, GDXConstants.BUTTON_UNMUTE_MUSIC_IMGY, GDXConstants.BUTTON_WIDTH, GDXConstants.BUTTON_HEIGHT);
+
+        muteSfxImage   = new TextureRegion(buttonMap, GDXConstants.BUTTON_MUTE_SFX_IMGX, GDXConstants.BUTTON_MUTE_SFX_IMGY, GDXConstants.BUTTON_WIDTH, GDXConstants.BUTTON_HEIGHT);
+        unmuteSfxImage = new TextureRegion(buttonMap, GDXConstants.BUTTON_UNMUTE_SFX_IMGX, GDXConstants.BUTTON_UNMUTE_SFX_IMGY, GDXConstants.BUTTON_WIDTH, GDXConstants.BUTTON_HEIGHT);
 
         /* music is courtesy of http://radtunez.com/ */
         music = Gdx.audio.newMusic(Gdx.files.internal(GDXConstants.GAME_MUSIC_PATH));
         music.setLooping(true);
         music.setVolume(GDXConstants.GAME_MUSIC_VOLUME);
         playmusic = true;
+
+        /* sfx */
+        growSound = Gdx.audio.newSound(Gdx.files.internal(GDXConstants.GROW_SOUND_PATH));
+        deathSound = Gdx.audio.newSound(Gdx.files.internal(GDXConstants.DEATH_SOUND_PATH));
+        playsfx = true;
 
         setScreen(screenManager);
     }

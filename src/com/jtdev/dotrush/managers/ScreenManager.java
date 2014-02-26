@@ -1,7 +1,10 @@
 package com.jtdev.dotrush.managers;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.jtdev.dotrush.Constants;
 import com.jtdev.dotrush.DotRush;
+import com.jtdev.dotrush.GDXConstants;
 
 public class ScreenManager implements Screen {
     private final DotRush main;
@@ -36,6 +39,9 @@ public class ScreenManager implements Screen {
 
     @Override
     public void resize(int width, int height) {
+        main.camera = new OrthographicCamera(GDXConstants.VIRTUAL_SCREEN_WIDTH, GDXConstants.VIRTUAL_SCREEN_HEIGHT);
+        main.camera.translate(GDXConstants.VIRTUAL_SCREEN_WIDTH / 2, GDXConstants.VIRTUAL_SCREEN_HEIGHT / 2, 0);
+
         screen.resize(width, height);
     }
 

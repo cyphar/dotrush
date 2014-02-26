@@ -26,7 +26,7 @@ public class EndScreen implements Screen {
     private boolean ishighscore;
     private int highscore;
 
-    private Button music, play, menu;
+    private Button music, sfx, play, menu;
     private float texty, textx;
     private String text;
 
@@ -63,18 +63,19 @@ public class EndScreen implements Screen {
 
         spriteBatch = new SpriteBatch();
 
-        TextureRegion musicImage = screenManager.getMain().playmusic ? screenManager.getMain().muteImage : screenManager.getMain().unmuteImage;
+        TextureRegion musicImage = screenManager.getMain().playmusic ? screenManager.getMain().muteMusicImage : screenManager.getMain().unmuteMusicImage;
         music = new Button(GDXConstants.BUTTON_MUSIC_X, GDXConstants.BUTTON_MUSIC_Y, musicImage);
+
+        TextureRegion sfxImage = screenManager.getMain().playsfx ? screenManager.getMain().muteSfxImage : screenManager.getMain().unmuteSfxImage;
+        sfx = new Button(GDXConstants.BUTTON_SFX_X, GDXConstants.BUTTON_SFX_Y, sfxImage);
+
         play = new Button(GDXConstants.END_BUTTON_PLAY_X, GDXConstants.END_BUTTON_PLAY_Y, screenManager.getMain().playImage);
         menu = new Button(GDXConstants.END_BUTTON_MENU_X, GDXConstants.END_BUTTON_MENU_Y, screenManager.getMain().menuImage);
 
         music.setScale(GDXConstants.BUTTON_MUSIC_SCALE_X, GDXConstants.BUTTON_MUSIC_SCALE_Y);
+        sfx.setScale(GDXConstants.BUTTON_SFX_SCALE_X, GDXConstants.BUTTON_SFX_SCALE_Y);
         play.setScale(GDXConstants.END_BUTTON_PLAY_SCALE_X, GDXConstants.END_BUTTON_PLAY_SCALE_Y);
         menu.setScale(GDXConstants.END_BUTTON_MENU_SCALE_X, GDXConstants.END_BUTTON_MENU_SCALE_Y);
-
-        logger.log("music: " + GDXConstants.BUTTON_MUSIC_SCALE_X + " x " + GDXConstants.BUTTON_MUSIC_SCALE_Y);
-        logger.log("play: " + GDXConstants.END_BUTTON_PLAY_SCALE_X + " x " + GDXConstants.END_BUTTON_PLAY_SCALE_Y);
-        logger.log("menu: " + GDXConstants.END_BUTTON_MENU_SCALE_X + " x " + GDXConstants.END_BUTTON_MENU_SCALE_Y);
 
         texty = GDXConstants.END_TEXT_OFFSET_Y + GDXConstants.VIRTUAL_SCREEN_HEIGHT / 2;
         textx = GDXConstants.END_TEXT_OFFSET_X;
@@ -87,31 +88,35 @@ public class EndScreen implements Screen {
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
         if(music.justPressed(inputManager)) {
-            logger.log("Music just pressed.");
-
             if(screenManager.getMain().music.isPlaying()) {
                 screenManager.getMain().music.stop();
-                music.setImage(screenManager.getMain().unmuteImage);
+                music.setImage(screenManager.getMain().unmuteMusicImage);
             } else {
                 screenManager.getMain().music.play();
-                music.setImage(screenManager.getMain().muteImage);
+                music.setImage(screenManager.getMain().muteMusicImage);
             }
 
             screenManager.getMain().playmusic = screenManager.getMain().music.isPlaying();
         }
 
-        if(play.justPressed(inputManager)) {
-            logger.log("Play just pressed.");
-            screenManager.setScreen(new GameScreen(screenManager));
+        if(sfx.justPressed(inputManager)) {
+            if(screenManager.getMain().playsfx)
+                sfx.setImage(screenManager.getMain().unmuteSfxImage);
+            else
+                sfx.setImage(screenManager.getMain().muteSfxImage);
+
+            screenManager.getMain().playsfx = !screenManager.getMain().playsfx;
         }
 
-        if(menu.justPressed(inputManager)) {
-            logger.log("Menu just pressed.");
+        if(play.justPressed(inputManager))
+            screenManager.setScreen(new GameScreen(screenManager));
+
+        if(menu.justPressed(inputManager))
             screenManager.setScreen(new StartScreen(screenManager));
-        }
 
         spriteBatch.begin();
         music.draw(spriteBatch);
+        sfx.draw(spriteBatch);
         play.draw(spriteBatch);
         menu.draw(spriteBatch);
 

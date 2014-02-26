@@ -84,8 +84,15 @@ public class GameManager {
 
             /* collision with player */
             if(enemy.collides(player)) {
-                if(player.getRadius() < enemy.getRadius())
+                if(player.getRadius() < enemy.getRadius()) {
+                    if(screenManager.getMain().playsfx)
+                        screenManager.getMain().deathSound.play(GDXConstants.DEATH_SOUND_VOLUME);
+
                     return 1;
+                }
+
+                if(screenManager.getMain().playsfx)
+                    screenManager.getMain().growSound.play(GDXConstants.GROW_SOUND_VOLUME);
 
                 enemyList.remove(i--);
                 player.updRadius(++score);
@@ -94,7 +101,7 @@ public class GameManager {
 
         while(enemyList.size() < GDXConstants.ENEMY_NUMBER) {
             float max = player.getRadius() + GDXConstants.ENEMY_DMAX_RADIUS,
-                    min = player.getRadius() - GDXConstants.ENEMY_DMIN_RADIUS;
+                  min = player.getRadius() - GDXConstants.ENEMY_DMIN_RADIUS;
 
             Enemy enemy = new Enemy(score, min, max);
             enemyList.add(enemy);

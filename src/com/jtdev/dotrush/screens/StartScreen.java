@@ -38,7 +38,7 @@ public class StartScreen implements Screen {
     private ShapeRenderer shapeRenderer;
     private Camera camera;
 
-    private Button music;
+    private Button music, sfx;
 
     public StartScreen(ScreenManager screenManager) {
         screenManager.getMain().adManager.setVisibility(false);
@@ -70,9 +70,13 @@ public class StartScreen implements Screen {
         if(screenManager.getMain().playmusic)
             screenManager.getMain().music.play();
 
-        TextureRegion musicImage = screenManager.getMain().playmusic ? screenManager.getMain().muteImage : screenManager.getMain().unmuteImage;
+        TextureRegion musicImage = screenManager.getMain().playmusic ? screenManager.getMain().muteMusicImage : screenManager.getMain().unmuteMusicImage;
         music = new Button(GDXConstants.BUTTON_MUSIC_X, GDXConstants.BUTTON_MUSIC_Y, musicImage);
         music.setScale(GDXConstants.BUTTON_MUSIC_SCALE_X, GDXConstants.BUTTON_MUSIC_SCALE_Y);
+
+        TextureRegion sfxImage = screenManager.getMain().playsfx ? screenManager.getMain().muteSfxImage : screenManager.getMain().unmuteSfxImage;
+        sfx = new Button(GDXConstants.BUTTON_SFX_X, GDXConstants.BUTTON_SFX_Y, sfxImage);
+        sfx.setScale(GDXConstants.BUTTON_SFX_SCALE_X, GDXConstants.BUTTON_SFX_SCALE_Y);
     }
 
     @Override
@@ -80,8 +84,9 @@ public class StartScreen implements Screen {
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
         boolean musicTouched = music.justPressed(screenManager.getMain().inputManager);
+        boolean sfxTouched = sfx.justPressed(screenManager.getMain().inputManager);
 
-        if(Gdx.input.justTouched() && !musicTouched) {
+        if(Gdx.input.justTouched() && !(musicTouched || sfxTouched)) {
             logger.log("switch from StartScreen to GameScreen");
             screenManager.setScreen(new GameScreen(screenManager));
         }
@@ -89,13 +94,22 @@ public class StartScreen implements Screen {
         if(musicTouched) {
             if(screenManager.getMain().music.isPlaying()) {
                 screenManager.getMain().music.stop();
-                music.setImage(screenManager.getMain().unmuteImage);
+                music.setImage(screenManager.getMain().unmuteMusicImage);
             } else {
                 screenManager.getMain().music.play();
-                music.setImage(screenManager.getMain().muteImage);
+                music.setImage(screenManager.getMain().muteMusicImage);
             }
 
             screenManager.getMain().playmusic = screenManager.getMain().music.isPlaying();
+        }
+
+        if(sfxTouched) {
+            if(screenManager.getMain().playsfx)
+                sfx.setImage(screenManager.getMain().unmuteSfxImage);
+            else
+                sfx.setImage(screenManager.getMain().muteSfxImage);
+
+            screenManager.getMain().playsfx = !screenManager.getMain().playsfx;
         }
 
         for(int i = 0; i < pseudoEnemyList.size(); i++) {
@@ -137,6 +151,7 @@ public class StartScreen implements Screen {
 
         spriteBatch.draw(logo, logox, logoy, GDXConstants.LOGO_WIDTH, GDXConstants.LOGO_HEIGHT);
         music.draw(spriteBatch);
+        sfx.draw(spriteBatch);
         spriteBatch.end();
     }
 
