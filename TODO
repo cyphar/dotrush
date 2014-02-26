@@ -1,0 +1,7 @@
++ Add support for 2.3.3+ (more phones)
++ ProGuard the app
++ Desktop version
++ Multiple difficulties (Causal, Mediocre, Rush)
++ Zoom out when player is too big
++ Game services integration
+* Fix bug that new control scheme seems to keep moving player if finger is still
