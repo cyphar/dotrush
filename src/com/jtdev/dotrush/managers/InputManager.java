@@ -7,12 +7,15 @@ import com.jtdev.dotrush.utils.Tuple;
 public class InputManager implements InputProcessor {
     private int clickx, clicky;
 
+    public int dx, dy;
     public int pointerx, pointery;
     public boolean active, inverted;
 
     public InputManager() {
         pointerx = pointery = 0;
+
         clickx = clicky = -1;
+        dx = dy = 0;
 
         active = false;
         inverted = true;
@@ -43,11 +46,12 @@ public class InputManager implements InputProcessor {
 
     @Override
     public boolean touchDown(int x, int y, int pointer, int button) {
+        if(inverted)
+            y = GDXConstants.VIRTUAL_SCREEN_HEIGHT - y;
+
         clickx = pointerx = x;
         clicky = pointery = y;
-
-        if(inverted)
-            clicky = pointery = GDXConstants.VIRTUAL_SCREEN_HEIGHT - y;
+        dx = dy = 0;
 
         active = true;
         return false;
@@ -55,11 +59,12 @@ public class InputManager implements InputProcessor {
 
     @Override
     public boolean touchUp(int x, int y, int pointer, int button) {
+        if(inverted)
+            y = GDXConstants.VIRTUAL_SCREEN_HEIGHT - y;
+
         pointerx = x;
         pointery = y;
-
-        if(inverted)
-            pointery = GDXConstants.VIRTUAL_SCREEN_HEIGHT - y;
+        dx = dy = 0;
 
         clickx = clicky = -1;
         active = false;
@@ -68,11 +73,14 @@ public class InputManager implements InputProcessor {
 
     @Override
     public boolean touchDragged(int x, int y, int pointer) {
+        if(inverted)
+            y = GDXConstants.VIRTUAL_SCREEN_HEIGHT - y;
+
+        dx = x - pointerx;
+        dy = y - pointery;
+
         pointerx = x;
         pointery = y;
-
-        if(inverted)
-            pointery = GDXConstants.VIRTUAL_SCREEN_HEIGHT - y;
 
         clickx = clicky = -1;
         active = true;
@@ -81,11 +89,14 @@ public class InputManager implements InputProcessor {
 
     @Override
     public boolean mouseMoved(int x, int y) {
+        if(inverted)
+            y = GDXConstants.VIRTUAL_SCREEN_HEIGHT - y;
+
+        dx = x - pointerx;
+        dy = y - pointery;
+
         pointerx = x;
         pointery = y;
-
-        if(inverted)
-            pointery = GDXConstants.VIRTUAL_SCREEN_HEIGHT - y;
 
         clickx = clicky = -1;
         return false;

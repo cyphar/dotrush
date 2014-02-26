@@ -63,7 +63,7 @@ public class GameManager {
         if(!started)
             return 0;
 
-        player.setPos(inputManager.pointerx, inputManager.pointery);
+        player.updPos(inputManager.dx, inputManager.dy);
         player.update(delta);
 
         int i;

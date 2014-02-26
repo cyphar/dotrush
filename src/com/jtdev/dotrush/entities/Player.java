@@ -35,13 +35,12 @@ public class Player implements Entity {
         radius = GDXConstants.PLAYER_MIN_RADIUS + score;
     }
 
+    public void updPos(float dx, float dy) {
+        setPos(x + dx, y + dy);
+    }
+
     @Override
     public Tuple<Float, Float> getPos() {
-        Float x, y;
-
-        x = this.x;
-        y = this.y;
-
         return new Tuple<Float, Float>(x, y);
     }
 
