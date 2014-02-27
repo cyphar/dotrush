@@ -5,6 +5,8 @@
 
 package com.jtdev.dotrush;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -64,7 +66,7 @@ public class DotRushActivity extends AndroidApplication implements AdManager {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
+        hideUI();
 
         logger = new Logger(this);
         IScoreManager scoreManager = null;
@@ -102,6 +104,12 @@ public class DotRushActivity extends AndroidApplication implements AdManager {
     @Override
     public void setVisibility(boolean visible) {
         adHandler.sendEmptyMessage(visible ? SHOW_ADS : HIDE_ADS);
+    }
+
+    @TargetApi(11)
+    private void hideUI() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
     }
 
     private AdRequest generateRequest() {
