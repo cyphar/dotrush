@@ -94,16 +94,7 @@ public class InputManager implements InputProcessor {
 
     @Override
     public boolean mouseMoved(int x, int y) {
-        if(inverted)
-            y = GDXConstants.VIRTUAL_SCREEN_HEIGHT - y;
-
-        dx = x - pointerx;
-        dy = y - pointery;
-
-        pointerx = x;
-        pointery = y;
-
-        clickx = clicky = -1;
+        touchDragged(x, y, 0);
         return false;
     }
 

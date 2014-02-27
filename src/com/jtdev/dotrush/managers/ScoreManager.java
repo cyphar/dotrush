@@ -11,23 +11,23 @@ public class ScoreManager implements IScoreManager {
     private int highscore;
     private IScoreDatabaseManager dbManager;
 
-    public ScoreManager(IScoreDatabaseManager dbManager) throws Exception {
+    public ScoreManager(IScoreDatabaseManager dbManager) {
         highscore = 0;
         this.dbManager = dbManager;
     }
 
     @Override
-    public boolean isHighScore(int score) throws Exception {
+    public boolean isHighScore(int score) {
         return score > dbManager.getHighScore();
     }
 
     @Override
-    public int getHighScore() throws Exception {
+    public int getHighScore() {
         return dbManager.getHighScore();
     }
 
     @Override
-    public int updHighScore(int score) throws Exception {
+    public int updHighScore(int score) {
         dbManager.addScore(score);
         return score;
     }

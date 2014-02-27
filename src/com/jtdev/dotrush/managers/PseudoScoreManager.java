@@ -17,20 +17,20 @@ public class PseudoScoreManager implements IScoreManager {
     }
 
     @Override
-    public boolean isHighScore(int score) throws SQLException {
+    public boolean isHighScore(int score) {
         logger.warn("PSEUDO ScoreManager -- isHighScore(*) == false");
         return false;
     }
 
     @Override
-    public int getHighScore() throws SQLException {
+    public int getHighScore() {
         logger.warn("PSEUDO ScoreManager -- getHighScore() == -1");
         return -1;
     }
 
     @Override
-    public int updHighScore(int score) throws SQLException {
-        logger.warn("PSEUDO ScoreManager -- updHighScore(*) => do nothing");
+    public int updHighScore(int score) {
+        logger.warn("PSEUDO ScoreManager -- updHighScore(*) == -1");
         return -1;
     }
 }
