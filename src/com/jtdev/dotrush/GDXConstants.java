@@ -21,6 +21,22 @@ public class GDXConstants {
     public static int VIRTUAL_SCREEN_WIDTH = Gdx.graphics.getWidth();
     public static int VIRTUAL_SCREEN_HEIGHT = Gdx.graphics.getHeight();
 
+    /* enemies */
+    public static int ENEMY_NUMBER = 150;
+    public static float ENEMY_MIN_VELOCITY = 80;
+    public static float ENEMY_MAX_VELOCITY = 160;
+
+    public static int ENEMY_POS_PADDING = GDXConstants.VIRTUAL_SCREEN_WIDTH / 2;
+    public static int ENEMY_MIN_PADDING = 15;
+
+    public static float ENEMY_DMIN_RADIUS = 45; /* 45 less than player */
+    public static float ENEMY_DMAX_RADIUS = 35; /* 35 more than player */
+    public static float ENEMY_MIN_RADIUS = 10;
+
+    /* player */
+    public static float PLAYER_MIN_RADIUS = 25;
+    public static float PLAYER_TOUCH_RADIUS = 80;
+
     /* music */
     public static String GAME_MUSIC_PATH = "audio/soundtrack-loop.ogg";
     public static float GAME_MUSIC_VOLUME = 0.25f;
@@ -134,18 +150,4 @@ public class GDXConstants {
     public static float END_BUTTON_MENU_OFF_Y = -VIRTUAL_SCREEN_HEIGHT / 12;
     public static float END_BUTTON_MENU_X = ((VIRTUAL_SCREEN_WIDTH - (BUTTON_WIDTH * END_BUTTON_MENU_SCALE_X)) / 2) + END_BUTTON_MENU_OFF_X;
     public static float END_BUTTON_MENU_Y = ((VIRTUAL_SCREEN_HEIGHT - (BUTTON_HEIGHT * END_BUTTON_MENU_SCALE_Y)) / 2) + END_BUTTON_MENU_OFF_Y;
-
-    /* enemies */
-    public static int ENEMY_NUMBER = 150;
-    public static float ENEMY_MIN_VELOCITY = 80;
-    public static float ENEMY_MAX_VELOCITY = 160;
-    public static int ENEMY_POS_PADDING = GDXConstants.VIRTUAL_SCREEN_WIDTH / 2;
-
-    public static float ENEMY_DMIN_RADIUS = 45; /* 45 less than player */
-    public static float ENEMY_DMAX_RADIUS = 35; /* 35 more than player */
-    public static float ENEMY_MIN_RADIUS = 10;
-
-    /* player */
-    public static float PLAYER_MIN_RADIUS = 25;
-    public static float PLAYER_TOUCH_RADIUS = 80;
 }

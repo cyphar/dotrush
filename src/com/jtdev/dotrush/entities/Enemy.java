@@ -37,23 +37,23 @@ public class Enemy implements Entity {
         switch(spawn) {
             default:
             case 0: /* top */
-                y = GDXConstants.VIRTUAL_SCREEN_HEIGHT + (int) radius;
+                y = GDXConstants.VIRTUAL_SCREEN_HEIGHT + (int) radius + GDXConstants.ENEMY_MIN_PADDING;
                 x = Rand.getRange(-GDXConstants.ENEMY_POS_PADDING, GDXConstants.VIRTUAL_SCREEN_WIDTH + GDXConstants.ENEMY_POS_PADDING);
                 angle = -Rand.getRange(0f, 180f);
                 break;
             case 1: /* bottom */
-                y = -(int) radius;
+                y = -((int) radius  + GDXConstants.ENEMY_MIN_PADDING);
                 x = Rand.getRange(-GDXConstants.ENEMY_POS_PADDING, GDXConstants.VIRTUAL_SCREEN_WIDTH + GDXConstants.ENEMY_POS_PADDING);
                 angle = Rand.getRange(0f, 180f);
                 break;
             case 2: /* left */
                 y = Rand.getRange(-GDXConstants.ENEMY_POS_PADDING, GDXConstants.VIRTUAL_SCREEN_HEIGHT + GDXConstants.ENEMY_POS_PADDING);
-                x = -(int) radius;
+                x = -((int) radius + GDXConstants.ENEMY_MIN_PADDING);
                 angle = -Rand.getRange(90f, 270f);
                 break;
             case 3: /* right */
                 y = Rand.getRange(-GDXConstants.ENEMY_POS_PADDING, GDXConstants.VIRTUAL_SCREEN_HEIGHT + GDXConstants.ENEMY_POS_PADDING);
-                x = GDXConstants.VIRTUAL_SCREEN_WIDTH + (int) radius;
+                x = GDXConstants.VIRTUAL_SCREEN_WIDTH + (int) radius + GDXConstants.ENEMY_MIN_PADDING;
                 angle = Rand.getRange(90f, 270f);
                 break;
         }
