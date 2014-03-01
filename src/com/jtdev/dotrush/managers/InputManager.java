@@ -18,7 +18,6 @@ public class InputManager implements InputProcessor {
 
     public InputManager() {
         pointerx = pointery = 0;
-
         clickx = clicky = -1;
         dx = dy = 0;
 
@@ -45,8 +44,7 @@ public class InputManager implements InputProcessor {
         if(clickx < 0 || clicky < 0)
             return null;
 
-        Tuple<Integer, Integer> pos = new Tuple<Integer, Integer>(clickx, clicky);
-        return pos;
+        return new Tuple<Integer, Integer>(clickx, clicky);
     }
 
     @Override
@@ -56,7 +54,6 @@ public class InputManager implements InputProcessor {
 
         clickx = pointerx = x;
         clicky = pointery = y;
-        dx = dy = 0;
 
         active = true;
         return false;
@@ -69,9 +66,7 @@ public class InputManager implements InputProcessor {
 
         pointerx = x;
         pointery = y;
-        dx = dy = 0;
 
-        clickx = clicky = -1;
         active = false;
         return false;
     }
@@ -87,7 +82,6 @@ public class InputManager implements InputProcessor {
         pointerx = x;
         pointery = y;
 
-        clickx = clicky = -1;
         active = true;
         return false;
     }
@@ -101,5 +95,10 @@ public class InputManager implements InputProcessor {
     @Override
     public boolean scrolled(int amount) {
         return false;
+    }
+
+    public void reset() {
+        dx = dy = 0;
+        clickx = clicky = -1;
     }
 }

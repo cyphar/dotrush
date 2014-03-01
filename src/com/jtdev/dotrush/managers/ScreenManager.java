@@ -7,7 +7,6 @@ package com.jtdev.dotrush.managers;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.jtdev.dotrush.Constants;
 import com.jtdev.dotrush.DotRush;
 import com.jtdev.dotrush.GDXConstants;
 
@@ -40,6 +39,7 @@ public class ScreenManager implements Screen {
     @Override
     public void render(float delta) {
         screen.render(delta);
+        main.inputManager.reset();
     }
 
     @Override
