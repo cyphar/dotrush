@@ -69,19 +69,7 @@ public class DotRushActivity extends AndroidApplication implements AdManager {
         hideUI();
 
         logger = new Logger(this);
-        IScoreManager scoreManager = null;
-
-        try {
-            scoreManager = new ScoreManager(new ScoreDatabaseManager(this.getBaseContext()));
-        } catch (Exception e) {
-            logger.warn("could not connect to score database");
-            logger.warn("db err: " + e.getMessage());
-
-            for(StackTraceElement ste: e.getStackTrace())
-                logger.warn("ste: " + ste.toString());
-
-            scoreManager = new PseudoScoreManager();
-        }
+        IScoreManager scoreManager = new ScoreManager(new ScoreDatabaseManager(this.getBaseContext()));
 
         RelativeLayout layout = new RelativeLayout(this);
         View gameView = initializeForView(new DotRush(this, scoreManager), cfg);

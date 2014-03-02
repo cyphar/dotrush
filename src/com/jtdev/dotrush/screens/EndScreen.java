@@ -26,10 +26,6 @@ public class EndScreen implements Screen {
 
     private SpriteBatch spriteBatch;
     private BitmapFont font;
-    private int score;
-
-    private boolean ishighscore;
-    private int highscore;
 
     private Button music, sfx, play, menu;
     private float texty, textx;
@@ -40,24 +36,14 @@ public class EndScreen implements Screen {
 
         logger = new Logger(this);
         this.screenManager = screenManager;
-        this.score = score;
         inputManager = screenManager.getMain().inputManager;
 
         IScoreManager scoreManager = screenManager.getMain().scoreManager;
 
-        try {
-            ishighscore = scoreManager.isHighScore(score);
-            highscore = scoreManager.getHighScore();
-            if(ishighscore)
-                highscore = scoreManager.updHighScore(score);
-        } catch (Exception e) {
-            logger.warn("need to use fake highscore: " + e.getMessage());
-            for(StackTraceElement ste: e.getStackTrace())
-                logger.warn("ste: " + ste.toString());
-
-            ishighscore = false;
-            highscore = -1;
-        }
+        boolean ishighscore = scoreManager.isHighScore(score);
+        int highscore = scoreManager.getHighScore();
+        if(ishighscore)
+            highscore = scoreManager.updHighScore(score);
 
         if(highscore < 0)
             text = String.format(GDXConstants.END_TEXT_NOHIGHSCORE, score);
